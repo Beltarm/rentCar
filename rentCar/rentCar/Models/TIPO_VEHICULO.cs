@@ -11,6 +11,7 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class TIPO_VEHICULO
     {
@@ -19,9 +20,11 @@ namespace rentCar.Models
         {
             this.VEHICULO = new HashSet<VEHICULO>();
         }
-    
+
         public int ID_TIPO_VEHICULO { get; set; }
+        [Display(Name = "Tipo de vehiculo"), StringLength(15, MinimumLength = 1)]
         public string NOMBRE_TIPO_VEHICULO { get; set; }
+        [Display(Name = "Estado")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

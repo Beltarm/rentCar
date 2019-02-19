@@ -11,6 +11,7 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class VEHICULO
     {
@@ -19,16 +20,31 @@ namespace rentCar.Models
         {
             this.IMAGEN = new HashSet<IMAGEN>();
         }
-    
+       
         public int ID_VEHICULO { get; set; }
+        [Display(Name = "No. Placa"),DataType(DataType.Text)]
+        [Required, StringLength(7, MinimumLength = 7)]
         public string NO_PLACA { get; set; }
+        [Required]
+        [ Display(Name = "Tipo de vehiculo")]
         public int ID_TIPO_VEHICULO { get; set; }
+        [Required]
+        [Display(Name = "Nombre de marca")]
         public int ID_MARCA { get; set; }
+        [Required]
         public int ID_MODELO { get; set; }
+        [Required]
         public int ID_TIPO_COMBUSTIBLE { get; set; }
+        [Display(Name = "Precio de vehiculo"), /*DataType(DataType.Currency),*/ Range(400, 4000,ErrorMessage = "Los precios se calculan por día, y debe ser entre 400 y 4000 pesos dominicanos o su equivalente")]
+        [Required]
         public Nullable<int> PRECIO_VEHICULO { get; set; }
+        [Display(Name = "Nombre página"),Required]
         public int ID_PAGINA { get; set; }
+        [Display(Name = "Estado")]
+        [Required,DataType(DataType.Text), StringLength(7, MinimumLength = 6)]
         public string ESTADO { get; set; }
+        [Display(Name = "Año"),StringLength(4)]
+        [Required]
         public string YEAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

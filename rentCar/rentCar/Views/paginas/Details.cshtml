@@ -1,0 +1,42 @@
+﻿@model rentCar.Models.PAGINA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PAGINA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NOMBRE_PAGINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NOMBRE_PAGINA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.URL_PAGINA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.URL_PAGINA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ESTADO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ESTADO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_PAGINA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

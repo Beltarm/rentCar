@@ -177,6 +177,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\marcasController.cs" />
+    <Compile Include="Controllers\modelosController.cs" />
+    <Compile Include="Controllers\paginasController.cs" />
+    <Compile Include="Controllers\tipoCombustibleController.cs" />
+    <Compile Include="Controllers\tipoVehiculoController.cs" />
+    <Compile Include="Controllers\vehiculosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -336,6 +342,36 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\marcas\Create.cshtml" />
+    <Content Include="Views\marcas\Delete.cshtml" />
+    <Content Include="Views\marcas\Details.cshtml" />
+    <Content Include="Views\marcas\Edit.cshtml" />
+    <Content Include="Views\marcas\Index.cshtml" />
+    <Content Include="Views\tipoVehiculo\Create.cshtml" />
+    <Content Include="Views\tipoVehiculo\Delete.cshtml" />
+    <Content Include="Views\tipoVehiculo\Details.cshtml" />
+    <Content Include="Views\tipoVehiculo\Edit.cshtml" />
+    <Content Include="Views\tipoVehiculo\Index.cshtml" />
+    <Content Include="Views\tipoCombustible\Create.cshtml" />
+    <Content Include="Views\tipoCombustible\Delete.cshtml" />
+    <Content Include="Views\tipoCombustible\Details.cshtml" />
+    <Content Include="Views\tipoCombustible\Edit.cshtml" />
+    <Content Include="Views\tipoCombustible\Index.cshtml" />
+    <Content Include="Views\paginas\Create.cshtml" />
+    <Content Include="Views\paginas\Delete.cshtml" />
+    <Content Include="Views\paginas\Details.cshtml" />
+    <Content Include="Views\paginas\Edit.cshtml" />
+    <Content Include="Views\paginas\Index.cshtml" />
+    <Content Include="Views\modelos\Create.cshtml" />
+    <Content Include="Views\modelos\Delete.cshtml" />
+    <Content Include="Views\modelos\Details.cshtml" />
+    <Content Include="Views\modelos\Edit.cshtml" />
+    <Content Include="Views\modelos\Index.cshtml" />
+    <Content Include="Views\vehiculos\Create.cshtml" />
+    <Content Include="Views\vehiculos\Delete.cshtml" />
+    <Content Include="Views\vehiculos\Details.cshtml" />
+    <Content Include="Views\vehiculos\Edit.cshtml" />
+    <Content Include="Views\vehiculos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

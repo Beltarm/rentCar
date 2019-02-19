@@ -11,6 +11,7 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class MODELO
     {
@@ -19,10 +20,13 @@ namespace rentCar.Models
         {
             this.VEHICULO = new HashSet<VEHICULO>();
         }
-    
+        
         public int ID_MODELO { get; set; }
+        [Display(Name = "Nombre de modelo")]
         public string NOMBRE_MODELO { get; set; }
+        [Display(Name = "Nombre de marca")]
         public Nullable<int> ID_MARCA { get; set; }
+        [Display(Name = "Estado")]
         public string ESTADO { get; set; }
     
         public virtual MARCA MARCA { get; set; }
