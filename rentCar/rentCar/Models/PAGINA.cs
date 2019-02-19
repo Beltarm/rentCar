@@ -25,7 +25,7 @@ namespace rentCar.Models
         [Display(Name = "Nombre de página"), StringLength(15, MinimumLength = 5)]
         [Required]
         public string NOMBRE_PAGINA { get; set; }
-        [Display(Name = "URL de página") , StringLength(15, MinimumLength = 10)]
+        [Display(Name = "URL de página") , StringLength(15, MinimumLength = 10), DataType(DataType.Url)]
         [Required]
         public string URL_PAGINA { get; set; }
         [Display(Name ="Estado"), StringLength(7, MinimumLength = 6)]

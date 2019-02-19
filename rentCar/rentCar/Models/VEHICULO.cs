@@ -35,7 +35,7 @@ namespace rentCar.Models
         public int ID_MODELO { get; set; }
         [Required]
         public int ID_TIPO_COMBUSTIBLE { get; set; }
-        [Display(Name = "Precio de vehiculo"), /*DataType(DataType.Currency),*/ Range(400, 4000,ErrorMessage = "Los precios se calculan por día, y debe ser entre 400 y 4000 pesos dominicanos o su equivalente")]
+        [Display(Name = "Precio de vehiculo"), /*DataType(DataType.Currency),*/ Range(400, 5000,ErrorMessage = "Los precios se calculan por día, y debe ser entre 400 y 4000 pesos dominicanos o su equivalente")]
         [Required]
         public Nullable<int> PRECIO_VEHICULO { get; set; }
         [Display(Name = "Nombre página"),Required]
@@ -45,6 +45,7 @@ namespace rentCar.Models
         public string ESTADO { get; set; }
         [Display(Name = "Año"),StringLength(4)]
         [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Este campo solo acepta números"), Range(2005, 2018 , ErrorMessage = "Digite un año correcto entre 2005 y 2018")]
         public string YEAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
