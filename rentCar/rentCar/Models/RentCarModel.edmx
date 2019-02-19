@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RentCarDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_CLIENTE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NICK_CLIENTE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD_CLIENTE" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="CEDULA_CLIENTE" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGEN">
+          <Key>
+            <PropertyRef Name="ID_IMAGEN" />
+          </Key>
+          <Property Name="ID_IMAGEN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_VEHICULO" Type="int" />
+          <Property Name="RUTA_IMAGEN" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MARCA">
+          <Key>
+            <PropertyRef Name="ID_MARCA" />
+          </Key>
+          <Property Name="ID_MARCA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_MARCA" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" />
+        </EntityType>
+        <EntityType Name="MODELO">
+          <Key>
+            <PropertyRef Name="ID_MODELO" />
+          </Key>
+          <Property Name="ID_MODELO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_MODELO" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ID_MARCA" Type="int" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PAGINA">
+          <Key>
+            <PropertyRef Name="ID_PAGINA" />
+          </Key>
+          <Property Name="ID_PAGINA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_PAGINA" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="URL_PAGINA" Type="varchar" MaxLength="50" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_COMBUSTIBLE">
+          <Key>
+            <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+          </Key>
+          <Property Name="ID_TIPO_COMBUSTIBLE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_COMBUSTIBLE" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPO_VEHICULO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_VEHICULO" />
+          </Key>
+          <Property Name="ID_TIPO_VEHICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE_TIPO_VEHICULO" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VEHICULO">
+          <Key>
+            <PropertyRef Name="ID_VEHICULO" />
+          </Key>
+          <Property Name="ID_VEHICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NO_PLACA" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ID_TIPO_VEHICULO" Type="int" />
+          <Property Name="ID_MARCA" Type="int" />
+          <Property Name="ID_MODELO" Type="int" />
+          <Property Name="ID_TIPO_COMBUSTIBLE" Type="int" />
+          <Property Name="PRECIO_VEHICULO" Type="int" />
+          <Property Name="ID_PAGINA" Type="int" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__IMAGEN__ID_VEHIC__693CA210">
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="0..1" />
+          <End Role="IMAGEN" Type="Self.IMAGEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULO">
+              <PropertyRef Name="ID_VEHICULO" />
+            </Principal>
+            <Dependent Role="IMAGEN">
+              <PropertyRef Name="ID_VEHICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MODELO__ID_MARCA__4222D4EF">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+          <End Role="MODELO" Type="Self.MODELO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCA">
+              <PropertyRef Name="ID_MARCA" />
+            </Principal>
+            <Dependent Role="MODELO">
+              <PropertyRef Name="ID_MARCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_MAR__534D60F1">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCA">
+              <PropertyRef Name="ID_MARCA" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_MARCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_MOD__5441852A">
+          <End Role="MODELO" Type="Self.MODELO" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODELO">
+              <PropertyRef Name="ID_MODELO" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_MODELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_PAG__5629CD9C">
+          <End Role="PAGINA" Type="Self.PAGINA" Multiplicity="1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAGINA">
+              <PropertyRef Name="ID_PAGINA" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_PAGINA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_TIP__52593CB8">
+          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_VEHICULO">
+              <PropertyRef Name="ID_TIPO_VEHICULO" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_TIPO_VEHICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_TIP__5535A963">
+          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_COMBUSTIBLE">
+              <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentCarDBModelStoreContainer">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IMAGEN" EntityType="Self.IMAGEN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MODELO" EntityType="Self.MODELO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PAGINA" EntityType="Self.PAGINA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_COMBUSTIBLE" EntityType="Self.TIPO_COMBUSTIBLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPO_VEHICULO" EntityType="Self.TIPO_VEHICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__IMAGEN__ID_VEHIC__693CA210" Association="Self.FK__IMAGEN__ID_VEHIC__693CA210">
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+            <End Role="IMAGEN" EntitySet="IMAGEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MODELO__ID_MARCA__4222D4EF" Association="Self.FK__MODELO__ID_MARCA__4222D4EF">
+            <End Role="MARCA" EntitySet="MARCA" />
+            <End Role="MODELO" EntitySet="MODELO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_MAR__534D60F1" Association="Self.FK__VEHICULO__ID_MAR__534D60F1">
+            <End Role="MARCA" EntitySet="MARCA" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_MOD__5441852A" Association="Self.FK__VEHICULO__ID_MOD__5441852A">
+            <End Role="MODELO" EntitySet="MODELO" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_PAG__5629CD9C" Association="Self.FK__VEHICULO__ID_PAG__5629CD9C">
+            <End Role="PAGINA" EntitySet="PAGINA" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_TIP__52593CB8" Association="Self.FK__VEHICULO__ID_TIP__52593CB8">
+            <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_TIP__5535A963" Association="Self.FK__VEHICULO__ID_TIP__5535A963">
+            <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentCarDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="ID_CLIENTE" />
+          </Key>
+          <Property Name="ID_CLIENTE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_CLIENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NICK_CLIENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD_CLIENTE" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CEDULA_CLIENTE" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IMAGEN">
+          <Key>
+            <PropertyRef Name="ID_IMAGEN" />
+          </Key>
+          <Property Name="ID_IMAGEN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_VEHICULO" Type="Int32" />
+          <Property Name="RUTA_IMAGEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__IMAGEN__ID_VEHIC__693CA210" FromRole="IMAGEN" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="MARCA">
+          <Key>
+            <PropertyRef Name="ID_MARCA" />
+          </Key>
+          <Property Name="ID_MARCA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_MARCA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MODELO" Relationship="Self.FK__MODELO__ID_MARCA__4222D4EF" FromRole="MARCA" ToRole="MODELO" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_MAR__534D60F1" FromRole="MARCA" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="MODELO">
+          <Key>
+            <PropertyRef Name="ID_MODELO" />
+          </Key>
+          <Property Name="ID_MODELO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_MODELO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_MARCA" Type="Int32" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MARCA" Relationship="Self.FK__MODELO__ID_MARCA__4222D4EF" FromRole="MODELO" ToRole="MARCA" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_MOD__5441852A" FromRole="MODELO" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="PAGINA">
+          <Key>
+            <PropertyRef Name="ID_PAGINA" />
+          </Key>
+          <Property Name="ID_PAGINA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_PAGINA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="URL_PAGINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_PAG__5629CD9C" FromRole="PAGINA" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="TIPO_COMBUSTIBLE">
+          <Key>
+            <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+          </Key>
+          <Property Name="ID_TIPO_COMBUSTIBLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TIPO_COMBUSTIBLE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__5535A963" FromRole="TIPO_COMBUSTIBLE" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="TIPO_VEHICULO">
+          <Key>
+            <PropertyRef Name="ID_TIPO_VEHICULO" />
+          </Key>
+          <Property Name="ID_TIPO_VEHICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE_TIPO_VEHICULO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__52593CB8" FromRole="TIPO_VEHICULO" ToRole="VEHICULO" />
+        </EntityType>
+        <EntityType Name="VEHICULO">
+          <Key>
+            <PropertyRef Name="ID_VEHICULO" />
+          </Key>
+          <Property Name="ID_VEHICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NO_PLACA" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_TIPO_VEHICULO" Type="Int32" />
+          <Property Name="ID_MARCA" Type="Int32" />
+          <Property Name="ID_MODELO" Type="Int32" />
+          <Property Name="ID_TIPO_COMBUSTIBLE" Type="Int32" />
+          <Property Name="PRECIO_VEHICULO" Type="Int32" />
+          <Property Name="ID_PAGINA" Type="Int32" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="IMAGEN" Relationship="Self.FK__IMAGEN__ID_VEHIC__693CA210" FromRole="VEHICULO" ToRole="IMAGEN" />
+          <NavigationProperty Name="MARCA" Relationship="Self.FK__VEHICULO__ID_MAR__534D60F1" FromRole="VEHICULO" ToRole="MARCA" />
+          <NavigationProperty Name="MODELO" Relationship="Self.FK__VEHICULO__ID_MOD__5441852A" FromRole="VEHICULO" ToRole="MODELO" />
+          <NavigationProperty Name="PAGINA" Relationship="Self.FK__VEHICULO__ID_PAG__5629CD9C" FromRole="VEHICULO" ToRole="PAGINA" />
+          <NavigationProperty Name="TIPO_COMBUSTIBLE" Relationship="Self.FK__VEHICULO__ID_TIP__5535A963" FromRole="VEHICULO" ToRole="TIPO_COMBUSTIBLE" />
+          <NavigationProperty Name="TIPO_VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__52593CB8" FromRole="VEHICULO" ToRole="TIPO_VEHICULO" />
+        </EntityType>
+        <Association Name="FK__IMAGEN__ID_VEHIC__693CA210">
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="0..1" />
+          <End Role="IMAGEN" Type="Self.IMAGEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULO">
+              <PropertyRef Name="ID_VEHICULO" />
+            </Principal>
+            <Dependent Role="IMAGEN">
+              <PropertyRef Name="ID_VEHICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__MODELO__ID_MARCA__4222D4EF">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+          <End Role="MODELO" Type="Self.MODELO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCA">
+              <PropertyRef Name="ID_MARCA" />
+            </Principal>
+            <Dependent Role="MODELO">
+              <PropertyRef Name="ID_MARCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_MAR__534D60F1">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MARCA">
+              <PropertyRef Name="ID_MARCA" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_MARCA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_MOD__5441852A">
+          <End Role="MODELO" Type="Self.MODELO" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MODELO">
+              <PropertyRef Name="ID_MODELO" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_MODELO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_PAG__5629CD9C">
+          <End Role="PAGINA" Type="Self.PAGINA" Multiplicity="1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PAGINA">
+              <PropertyRef Name="ID_PAGINA" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_PAGINA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_TIP__5535A963">
+          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_COMBUSTIBLE">
+              <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__VEHICULO__ID_TIP__52593CB8">
+          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="0..1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_VEHICULO">
+              <PropertyRef Name="ID_TIPO_VEHICULO" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_TIPO_VEHICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentCarDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" />
+          <EntitySet Name="IMAGEN" EntityType="Self.IMAGEN" />
+          <EntitySet Name="MARCA" EntityType="Self.MARCA" />
+          <EntitySet Name="MODELO" EntityType="Self.MODELO" />
+          <EntitySet Name="PAGINA" EntityType="Self.PAGINA" />
+          <EntitySet Name="TIPO_COMBUSTIBLE" EntityType="Self.TIPO_COMBUSTIBLE" />
+          <EntitySet Name="TIPO_VEHICULO" EntityType="Self.TIPO_VEHICULO" />
+          <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" />
+          <AssociationSet Name="FK__IMAGEN__ID_VEHIC__693CA210" Association="Self.FK__IMAGEN__ID_VEHIC__693CA210">
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+            <End Role="IMAGEN" EntitySet="IMAGEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK__MODELO__ID_MARCA__4222D4EF" Association="Self.FK__MODELO__ID_MARCA__4222D4EF">
+            <End Role="MARCA" EntitySet="MARCA" />
+            <End Role="MODELO" EntitySet="MODELO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_MAR__534D60F1" Association="Self.FK__VEHICULO__ID_MAR__534D60F1">
+            <End Role="MARCA" EntitySet="MARCA" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_MOD__5441852A" Association="Self.FK__VEHICULO__ID_MOD__5441852A">
+            <End Role="MODELO" EntitySet="MODELO" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_PAG__5629CD9C" Association="Self.FK__VEHICULO__ID_PAG__5629CD9C">
+            <End Role="PAGINA" EntitySet="PAGINA" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_TIP__5535A963" Association="Self.FK__VEHICULO__ID_TIP__5535A963">
+            <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__VEHICULO__ID_TIP__52593CB8" Association="Self.FK__VEHICULO__ID_TIP__52593CB8">
+            <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
+            <End Role="VEHICULO" EntitySet="VEHICULO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentCarDBModelStoreContainer" CdmEntityContainer="RentCarDBEntities">
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="RentCarDBModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
+                <ScalarProperty Name="NOMBRE_CLIENTE" ColumnName="NOMBRE_CLIENTE" />
+                <ScalarProperty Name="NICK_CLIENTE" ColumnName="NICK_CLIENTE" />
+                <ScalarProperty Name="PASSWORD_CLIENTE" ColumnName="PASSWORD_CLIENTE" />
+                <ScalarProperty Name="CEDULA_CLIENTE" ColumnName="CEDULA_CLIENTE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMAGEN">
+            <EntityTypeMapping TypeName="RentCarDBModel.IMAGEN">
+              <MappingFragment StoreEntitySet="IMAGEN">
+                <ScalarProperty Name="ID_IMAGEN" ColumnName="ID_IMAGEN" />
+                <ScalarProperty Name="ID_VEHICULO" ColumnName="ID_VEHICULO" />
+                <ScalarProperty Name="RUTA_IMAGEN" ColumnName="RUTA_IMAGEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MARCA">
+            <EntityTypeMapping TypeName="RentCarDBModel.MARCA">
+              <MappingFragment StoreEntitySet="MARCA">
+                <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+                <ScalarProperty Name="NOMBRE_MARCA" ColumnName="NOMBRE_MARCA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MODELO">
+            <EntityTypeMapping TypeName="RentCarDBModel.MODELO">
+              <MappingFragment StoreEntitySet="MODELO">
+                <ScalarProperty Name="ID_MODELO" ColumnName="ID_MODELO" />
+                <ScalarProperty Name="NOMBRE_MODELO" ColumnName="NOMBRE_MODELO" />
+                <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PAGINA">
+            <EntityTypeMapping TypeName="RentCarDBModel.PAGINA">
+              <MappingFragment StoreEntitySet="PAGINA">
+                <ScalarProperty Name="ID_PAGINA" ColumnName="ID_PAGINA" />
+                <ScalarProperty Name="NOMBRE_PAGINA" ColumnName="NOMBRE_PAGINA" />
+                <ScalarProperty Name="URL_PAGINA" ColumnName="URL_PAGINA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_COMBUSTIBLE">
+            <EntityTypeMapping TypeName="RentCarDBModel.TIPO_COMBUSTIBLE">
+              <MappingFragment StoreEntitySet="TIPO_COMBUSTIBLE">
+                <ScalarProperty Name="ID_TIPO_COMBUSTIBLE" ColumnName="ID_TIPO_COMBUSTIBLE" />
+                <ScalarProperty Name="NOMBRE_TIPO_COMBUSTIBLE" ColumnName="NOMBRE_TIPO_COMBUSTIBLE" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPO_VEHICULO">
+            <EntityTypeMapping TypeName="RentCarDBModel.TIPO_VEHICULO">
+              <MappingFragment StoreEntitySet="TIPO_VEHICULO">
+                <ScalarProperty Name="ID_TIPO_VEHICULO" ColumnName="ID_TIPO_VEHICULO" />
+                <ScalarProperty Name="NOMBRE_TIPO_VEHICULO" ColumnName="NOMBRE_TIPO_VEHICULO" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICULO">
+            <EntityTypeMapping TypeName="RentCarDBModel.VEHICULO">
+              <MappingFragment StoreEntitySet="VEHICULO">
+                <ScalarProperty Name="ID_VEHICULO" ColumnName="ID_VEHICULO" />
+                <ScalarProperty Name="NO_PLACA" ColumnName="NO_PLACA" />
+                <ScalarProperty Name="ID_TIPO_VEHICULO" ColumnName="ID_TIPO_VEHICULO" />
+                <ScalarProperty Name="ID_MARCA" ColumnName="ID_MARCA" />
+                <ScalarProperty Name="ID_MODELO" ColumnName="ID_MODELO" />
+                <ScalarProperty Name="ID_TIPO_COMBUSTIBLE" ColumnName="ID_TIPO_COMBUSTIBLE" />
+                <ScalarProperty Name="PRECIO_VEHICULO" ColumnName="PRECIO_VEHICULO" />
+                <ScalarProperty Name="ID_PAGINA" ColumnName="ID_PAGINA" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
