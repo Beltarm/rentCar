@@ -72,13 +72,14 @@
           </Key>
           <Property Name="ID_VEHICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NO_PLACA" Type="varchar" MaxLength="7" Nullable="false" />
-          <Property Name="ID_TIPO_VEHICULO" Type="int" />
-          <Property Name="ID_MARCA" Type="int" />
-          <Property Name="ID_MODELO" Type="int" />
-          <Property Name="ID_TIPO_COMBUSTIBLE" Type="int" />
+          <Property Name="ID_TIPO_VEHICULO" Type="int" Nullable="false" />
+          <Property Name="ID_MARCA" Type="int" Nullable="false" />
+          <Property Name="ID_MODELO" Type="int" Nullable="false" />
+          <Property Name="ID_TIPO_COMBUSTIBLE" Type="int" Nullable="false" />
           <Property Name="PRECIO_VEHICULO" Type="int" />
           <Property Name="ID_PAGINA" Type="int" Nullable="false" />
           <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="YEAR" Type="varchar" MaxLength="4" />
         </EntityType>
         <Association Name="FK__IMAGEN__ID_VEHIC__693CA210">
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="0..1" />
@@ -104,8 +105,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_MAR__534D60F1">
-          <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_MARCA">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MARCA">
@@ -116,8 +117,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_MOD__5441852A">
-          <End Role="MODELO" Type="Self.MODELO" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_MODELO">
+          <End Role="MODELO" Type="Self.MODELO" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MODELO">
@@ -128,7 +129,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_PAG__5629CD9C">
+        <Association Name="FK_VEHICULO_PAGINA">
           <End Role="PAGINA" Type="Self.PAGINA" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -140,20 +141,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_TIP__52593CB8">
-          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="0..1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_VEHICULO">
-              <PropertyRef Name="ID_TIPO_VEHICULO" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="ID_TIPO_VEHICULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__VEHICULO__ID_TIP__5535A963">
-          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_TIPO_COMBUSTIBLE">
+          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_COMBUSTIBLE">
@@ -161,6 +150,18 @@
             </Principal>
             <Dependent Role="VEHICULO">
               <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VEHICULO_TIPO_VEHICULO">
+          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="1" />
+          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_VEHICULO">
+              <PropertyRef Name="ID_TIPO_VEHICULO" />
+            </Principal>
+            <Dependent Role="VEHICULO">
+              <PropertyRef Name="ID_TIPO_VEHICULO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -181,24 +182,24 @@
             <End Role="MARCA" EntitySet="MARCA" />
             <End Role="MODELO" EntitySet="MODELO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_MAR__534D60F1" Association="Self.FK__VEHICULO__ID_MAR__534D60F1">
+          <AssociationSet Name="FK_VEHICULO_MARCA" Association="Self.FK_VEHICULO_MARCA">
             <End Role="MARCA" EntitySet="MARCA" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_MOD__5441852A" Association="Self.FK__VEHICULO__ID_MOD__5441852A">
+          <AssociationSet Name="FK_VEHICULO_MODELO" Association="Self.FK_VEHICULO_MODELO">
             <End Role="MODELO" EntitySet="MODELO" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_PAG__5629CD9C" Association="Self.FK__VEHICULO__ID_PAG__5629CD9C">
+          <AssociationSet Name="FK_VEHICULO_PAGINA" Association="Self.FK_VEHICULO_PAGINA">
             <End Role="PAGINA" EntitySet="PAGINA" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_TIP__52593CB8" Association="Self.FK__VEHICULO__ID_TIP__52593CB8">
-            <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
+          <AssociationSet Name="FK_VEHICULO_TIPO_COMBUSTIBLE" Association="Self.FK_VEHICULO_TIPO_COMBUSTIBLE">
+            <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_TIP__5535A963" Association="Self.FK__VEHICULO__ID_TIP__5535A963">
-            <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
+          <AssociationSet Name="FK_VEHICULO_TIPO_VEHICULO" Association="Self.FK_VEHICULO_TIPO_VEHICULO">
+            <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
         </EntityContainer>
@@ -235,7 +236,7 @@
           <Property Name="NOMBRE_MARCA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MODELO" Relationship="Self.FK__MODELO__ID_MARCA__4222D4EF" FromRole="MARCA" ToRole="MODELO" />
-          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_MAR__534D60F1" FromRole="MARCA" ToRole="VEHICULO" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_MARCA" FromRole="MARCA" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="MODELO">
           <Key>
@@ -246,7 +247,7 @@
           <Property Name="ID_MARCA" Type="Int32" />
           <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MARCA" Relationship="Self.FK__MODELO__ID_MARCA__4222D4EF" FromRole="MODELO" ToRole="MARCA" />
-          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_MOD__5441852A" FromRole="MODELO" ToRole="VEHICULO" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_MODELO" FromRole="MODELO" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="PAGINA">
           <Key>
@@ -256,7 +257,7 @@
           <Property Name="NOMBRE_PAGINA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="URL_PAGINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_PAG__5629CD9C" FromRole="PAGINA" ToRole="VEHICULO" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_PAGINA" FromRole="PAGINA" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="TIPO_COMBUSTIBLE">
           <Key>
@@ -265,7 +266,7 @@
           <Property Name="ID_TIPO_COMBUSTIBLE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE_TIPO_COMBUSTIBLE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__5535A963" FromRole="TIPO_COMBUSTIBLE" ToRole="VEHICULO" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_TIPO_COMBUSTIBLE" FromRole="TIPO_COMBUSTIBLE" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="TIPO_VEHICULO">
           <Key>
@@ -274,7 +275,7 @@
           <Property Name="ID_TIPO_VEHICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE_TIPO_VEHICULO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__52593CB8" FromRole="TIPO_VEHICULO" ToRole="VEHICULO" />
+          <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_TIPO_VEHICULO" FromRole="TIPO_VEHICULO" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="VEHICULO">
           <Key>
@@ -282,19 +283,20 @@
           </Key>
           <Property Name="ID_VEHICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NO_PLACA" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ID_TIPO_VEHICULO" Type="Int32" />
-          <Property Name="ID_MARCA" Type="Int32" />
-          <Property Name="ID_MODELO" Type="Int32" />
-          <Property Name="ID_TIPO_COMBUSTIBLE" Type="Int32" />
+          <Property Name="ID_TIPO_VEHICULO" Type="Int32" Nullable="false" />
+          <Property Name="ID_MARCA" Type="Int32" Nullable="false" />
+          <Property Name="ID_MODELO" Type="Int32" Nullable="false" />
+          <Property Name="ID_TIPO_COMBUSTIBLE" Type="Int32" Nullable="false" />
           <Property Name="PRECIO_VEHICULO" Type="Int32" />
           <Property Name="ID_PAGINA" Type="Int32" Nullable="false" />
           <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="IMAGEN" Relationship="Self.FK__IMAGEN__ID_VEHIC__693CA210" FromRole="VEHICULO" ToRole="IMAGEN" />
-          <NavigationProperty Name="MARCA" Relationship="Self.FK__VEHICULO__ID_MAR__534D60F1" FromRole="VEHICULO" ToRole="MARCA" />
-          <NavigationProperty Name="MODELO" Relationship="Self.FK__VEHICULO__ID_MOD__5441852A" FromRole="VEHICULO" ToRole="MODELO" />
-          <NavigationProperty Name="PAGINA" Relationship="Self.FK__VEHICULO__ID_PAG__5629CD9C" FromRole="VEHICULO" ToRole="PAGINA" />
-          <NavigationProperty Name="TIPO_COMBUSTIBLE" Relationship="Self.FK__VEHICULO__ID_TIP__5535A963" FromRole="VEHICULO" ToRole="TIPO_COMBUSTIBLE" />
-          <NavigationProperty Name="TIPO_VEHICULO" Relationship="Self.FK__VEHICULO__ID_TIP__52593CB8" FromRole="VEHICULO" ToRole="TIPO_VEHICULO" />
+          <NavigationProperty Name="MARCA" Relationship="Self.FK_VEHICULO_MARCA" FromRole="VEHICULO" ToRole="MARCA" />
+          <NavigationProperty Name="MODELO" Relationship="Self.FK_VEHICULO_MODELO" FromRole="VEHICULO" ToRole="MODELO" />
+          <NavigationProperty Name="PAGINA" Relationship="Self.FK_VEHICULO_PAGINA" FromRole="VEHICULO" ToRole="PAGINA" />
+          <NavigationProperty Name="TIPO_COMBUSTIBLE" Relationship="Self.FK_VEHICULO_TIPO_COMBUSTIBLE" FromRole="VEHICULO" ToRole="TIPO_COMBUSTIBLE" />
+          <NavigationProperty Name="TIPO_VEHICULO" Relationship="Self.FK_VEHICULO_TIPO_VEHICULO" FromRole="VEHICULO" ToRole="TIPO_VEHICULO" />
         </EntityType>
         <Association Name="FK__IMAGEN__ID_VEHIC__693CA210">
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="0..1" />
@@ -320,8 +322,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_MAR__534D60F1">
-          <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_MARCA">
+          <End Role="MARCA" Type="Self.MARCA" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MARCA">
@@ -332,8 +334,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_MOD__5441852A">
-          <End Role="MODELO" Type="Self.MODELO" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_MODELO">
+          <End Role="MODELO" Type="Self.MODELO" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MODELO">
@@ -344,7 +346,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_PAG__5629CD9C">
+        <Association Name="FK_VEHICULO_PAGINA">
           <End Role="PAGINA" Type="Self.PAGINA" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
@@ -356,8 +358,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_TIP__5535A963">
-          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_TIPO_COMBUSTIBLE">
+          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_COMBUSTIBLE">
@@ -368,8 +370,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__VEHICULO__ID_TIP__52593CB8">
-          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="0..1" />
+        <Association Name="FK_VEHICULO_TIPO_VEHICULO">
+          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="1" />
           <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TIPO_VEHICULO">
@@ -397,23 +399,23 @@
             <End Role="MARCA" EntitySet="MARCA" />
             <End Role="MODELO" EntitySet="MODELO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_MAR__534D60F1" Association="Self.FK__VEHICULO__ID_MAR__534D60F1">
+          <AssociationSet Name="FK_VEHICULO_MARCA" Association="Self.FK_VEHICULO_MARCA">
             <End Role="MARCA" EntitySet="MARCA" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_MOD__5441852A" Association="Self.FK__VEHICULO__ID_MOD__5441852A">
+          <AssociationSet Name="FK_VEHICULO_MODELO" Association="Self.FK_VEHICULO_MODELO">
             <End Role="MODELO" EntitySet="MODELO" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_PAG__5629CD9C" Association="Self.FK__VEHICULO__ID_PAG__5629CD9C">
+          <AssociationSet Name="FK_VEHICULO_PAGINA" Association="Self.FK_VEHICULO_PAGINA">
             <End Role="PAGINA" EntitySet="PAGINA" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_TIP__5535A963" Association="Self.FK__VEHICULO__ID_TIP__5535A963">
+          <AssociationSet Name="FK_VEHICULO_TIPO_COMBUSTIBLE" Association="Self.FK_VEHICULO_TIPO_COMBUSTIBLE">
             <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
-          <AssociationSet Name="FK__VEHICULO__ID_TIP__52593CB8" Association="Self.FK__VEHICULO__ID_TIP__52593CB8">
+          <AssociationSet Name="FK_VEHICULO_TIPO_VEHICULO" Association="Self.FK_VEHICULO_TIPO_VEHICULO">
             <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
@@ -504,6 +506,7 @@
                 <ScalarProperty Name="PRECIO_VEHICULO" ColumnName="PRECIO_VEHICULO" />
                 <ScalarProperty Name="ID_PAGINA" ColumnName="ID_PAGINA" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="YEAR" ColumnName="YEAR" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

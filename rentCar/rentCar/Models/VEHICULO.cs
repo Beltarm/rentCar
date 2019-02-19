@@ -22,13 +22,14 @@ namespace rentCar.Models
     
         public int ID_VEHICULO { get; set; }
         public string NO_PLACA { get; set; }
-        public Nullable<int> ID_TIPO_VEHICULO { get; set; }
-        public Nullable<int> ID_MARCA { get; set; }
-        public Nullable<int> ID_MODELO { get; set; }
-        public Nullable<int> ID_TIPO_COMBUSTIBLE { get; set; }
+        public int ID_TIPO_VEHICULO { get; set; }
+        public int ID_MARCA { get; set; }
+        public int ID_MODELO { get; set; }
+        public int ID_TIPO_COMBUSTIBLE { get; set; }
         public Nullable<int> PRECIO_VEHICULO { get; set; }
         public int ID_PAGINA { get; set; }
         public string ESTADO { get; set; }
+        public string YEAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMAGEN> IMAGEN { get; set; }
