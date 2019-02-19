@@ -26,7 +26,9 @@ namespace rentCar.Models
         [Display(Name = "Nombre de marca")]
         [Required, StringLength(15, MinimumLength = 2)]
         public string NOMBRE_MARCA { get; set; }
-        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6, ErrorMessage = "Colocar ACTIVO o INACTIVO")]
+        [Required]
+        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6)]
+        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

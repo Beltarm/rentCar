@@ -28,7 +28,9 @@ namespace rentCar.Models
         [Required]
         [Display(Name = "Nombre de marca")]
         public Nullable<int> ID_MARCA { get; set; }
-        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6, ErrorMessage = "Colocar ACTIVO o INACTIVO")]
+        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6)]
+        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
+        [Required]
         public string ESTADO { get; set; }
     
         public virtual MARCA MARCA { get; set; }

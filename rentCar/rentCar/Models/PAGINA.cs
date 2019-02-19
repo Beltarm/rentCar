@@ -30,6 +30,7 @@ namespace rentCar.Models
         public string URL_PAGINA { get; set; }
         [Display(Name ="Estado"), StringLength(7, MinimumLength = 6)]
         [Required]
+        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

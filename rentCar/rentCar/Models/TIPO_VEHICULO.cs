@@ -24,8 +24,10 @@ namespace rentCar.Models
         public int ID_TIPO_VEHICULO { get; set; }
         [Display(Name = "Tipo de vehiculo"), StringLength(15, MinimumLength = 1)]
         [Required]
+        [RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Este campo solo acepta letras")]
         public string NOMBRE_TIPO_VEHICULO { get; set; }
         [Required]
+        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         [Display(Name = "Estado"), StringLength(7, MinimumLength = 6,ErrorMessage = "Colocar ACTIVO o INACTIVO como estado")]
         public string ESTADO { get; set; }
     

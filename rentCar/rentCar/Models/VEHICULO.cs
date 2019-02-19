@@ -37,11 +37,14 @@ namespace rentCar.Models
         public int ID_TIPO_COMBUSTIBLE { get; set; }
         [Display(Name = "Precio de vehiculo"), /*DataType(DataType.Currency),*/ Range(400, 5000,ErrorMessage = "Los precios se calculan por día, y debe ser entre 400 y 4000 pesos dominicanos o su equivalente")]
         [Required]
+        [RegularExpression("^[0-9]*$", ErrorMessage = "Este campo solo acepta números")]
         public Nullable<int> PRECIO_VEHICULO { get; set; }
         [Display(Name = "Nombre página"),Required]
         public int ID_PAGINA { get; set; }
         [Display(Name = "Estado")]
-        [Required,DataType(DataType.Text), StringLength(7, MinimumLength = 6)]
+        [Required,DataType(DataType.Text), StringLength(8, MinimumLength = 6)]
+        //[RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Este campo solo acepta letras")]
+        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
         [Display(Name = "Año"),StringLength(4)]
         [Required]
