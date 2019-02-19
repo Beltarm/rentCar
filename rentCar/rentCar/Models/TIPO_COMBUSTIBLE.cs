@@ -22,9 +22,9 @@ namespace rentCar.Models
         }
         
         public int ID_TIPO_COMBUSTIBLE { get; set; }
-        [Display(Name = "Tipo de combustible")]
+        [Display(Name = "Tipo de combustible"), Required, StringLength(15, MinimumLength = 1)]
         public string NOMBRE_TIPO_COMBUSTIBLE { get; set; }
-        [Display(Name = "Estado")]
+        [Display(Name = "Estado"), Required, StringLength(7, MinimumLength = 6, ErrorMessage = "Colocar ACTIVO o INACTIVO como estado")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

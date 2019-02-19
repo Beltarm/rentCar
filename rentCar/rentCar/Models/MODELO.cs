@@ -22,11 +22,13 @@ namespace rentCar.Models
         }
         
         public int ID_MODELO { get; set; }
-        [Display(Name = "Nombre de modelo")]
+        [Display(Name = "Nombre de modelo"),StringLength(15, MinimumLength = 1)]
+        [Required]
         public string NOMBRE_MODELO { get; set; }
+        [Required]
         [Display(Name = "Nombre de marca")]
         public Nullable<int> ID_MARCA { get; set; }
-        [Display(Name = "Estado")]
+        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6, ErrorMessage = "Colocar ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
     
         public virtual MARCA MARCA { get; set; }

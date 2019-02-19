@@ -23,8 +23,10 @@ namespace rentCar.Models
 
         public int ID_TIPO_VEHICULO { get; set; }
         [Display(Name = "Tipo de vehiculo"), StringLength(15, MinimumLength = 1)]
+        [Required]
         public string NOMBRE_TIPO_VEHICULO { get; set; }
-        [Display(Name = "Estado")]
+        [Required]
+        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6,ErrorMessage = "Colocar ACTIVO o INACTIVO como estado")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
