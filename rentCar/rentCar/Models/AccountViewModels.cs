@@ -49,9 +49,9 @@ namespace rentCar.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [Display(Name = "Usuario")]
+
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +64,14 @@ namespace rentCar.Models
 
     public class RegisterViewModel
     {
+        [Required]
+        [Display(Name = "Rol")]
+        public string UserRoles { get; set; }
+
+        [Required]
+        [Display(Name = "Usuario")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
