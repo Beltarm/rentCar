@@ -15,7 +15,7 @@ namespace rentCar.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Creadores del proyecto:";
 
             return View();
         }
