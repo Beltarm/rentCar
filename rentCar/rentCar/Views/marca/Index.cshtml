@@ -1,4 +1,4 @@
-﻿@model IEnumerable<rentCar.Models.TIPO_COMBUSTIBLE>
+﻿@model IEnumerable<rentCar.Models.MARCA>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.NOMBRE_TIPO_COMBUSTIBLE)
+            @Html.DisplayNameFor(model => model.NOMBRE_MARCA)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ESTADO)
@@ -24,15 +24,15 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.NOMBRE_TIPO_COMBUSTIBLE)
+            @Html.DisplayFor(modelItem => item.NOMBRE_MARCA)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ESTADO)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TIPO_COMBUSTIBLE }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_TIPO_COMBUSTIBLE }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TIPO_COMBUSTIBLE })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_MARCA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_MARCA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_MARCA })
         </td>
     </tr>
 }

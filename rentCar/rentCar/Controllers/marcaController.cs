@@ -10,18 +10,17 @@ using rentCar.Models;
 
 namespace rentCar.Controllers
 {
-    [Authorize(Roles = "Admin")]
-    public class marcasController : Controller
+    public class marcaController : Controller
     {
         private RentCarDBEntities db = new RentCarDBEntities();
 
-        // GET: marcas
+        // GET: marca
         public ActionResult Index()
         {
             return View(db.MARCA.ToList());
         }
 
-        // GET: marcas/Details/5
+        // GET: marca/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,15 +35,15 @@ namespace rentCar.Controllers
             return View(mARCA);
         }
 
-        // GET: marcas/Create
+        // GET: marca/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: marcas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: marca/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_MARCA,NOMBRE_MARCA,ESTADO")] MARCA mARCA)
@@ -59,7 +58,7 @@ namespace rentCar.Controllers
             return View(mARCA);
         }
 
-        // GET: marcas/Edit/5
+        // GET: marca/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,9 +73,9 @@ namespace rentCar.Controllers
             return View(mARCA);
         }
 
-        // POST: marcas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: marca/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_MARCA,NOMBRE_MARCA,ESTADO")] MARCA mARCA)
@@ -90,7 +89,7 @@ namespace rentCar.Controllers
             return View(mARCA);
         }
 
-        // GET: marcas/Delete/5
+        // GET: marca/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +104,7 @@ namespace rentCar.Controllers
             return View(mARCA);
         }
 
-        // POST: marcas/Delete/5
+        // POST: marca/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

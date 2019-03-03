@@ -3,15 +3,16 @@
 
 <div class="container">
     <ul>
-        <li>@Html.ActionLink("Marcas", "Index", "marcas")</li>
+        <li>@Html.ActionLink("Marcas", "Index", "marca")</li>
         <li>@Html.ActionLink("Tipos de vehiculo", "Index", "tipoVehiculo")</li>
         <li>@Html.ActionLink("Modelos", "Index", "modelos")</li>
-        <li>@Html.ActionLink("Paginas", "Index", "paginass")</li>
+        <li>@Html.ActionLink("Paginas", "Index", "paginas")</li>
         <li>@Html.ActionLink("tipos de combustible", "Index", "tipoCombustible")</li>
     </ul>
+    @RenderBody()
 </div>
 
-    @RenderBody()
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

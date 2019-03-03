@@ -10,7 +10,6 @@ using rentCar.Models;
 
 namespace rentCar.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class vehiculosController : Controller
     {
         private RentCarDBEntities db = new RentCarDBEntities();
@@ -49,8 +48,8 @@ namespace rentCar.Controllers
         }
 
         // POST: vehiculos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_VEHICULO,NO_PLACA,ID_TIPO_VEHICULO,ID_MARCA,ID_MODELO,ID_TIPO_COMBUSTIBLE,PRECIO_VEHICULO,ID_PAGINA,ESTADO,YEAR")] VEHICULO vEHICULO)
@@ -91,8 +90,8 @@ namespace rentCar.Controllers
         }
 
         // POST: vehiculos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_VEHICULO,NO_PLACA,ID_TIPO_VEHICULO,ID_MARCA,ID_MODELO,ID_TIPO_COMBUSTIBLE,PRECIO_VEHICULO,ID_PAGINA,ESTADO,YEAR")] VEHICULO vEHICULO)

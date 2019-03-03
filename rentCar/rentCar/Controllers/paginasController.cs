@@ -10,7 +10,6 @@ using rentCar.Models;
 
 namespace rentCar.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class paginasController : Controller
     {
         private RentCarDBEntities db = new RentCarDBEntities();
@@ -43,8 +42,8 @@ namespace rentCar.Controllers
         }
 
         // POST: paginas/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID_PAGINA,NOMBRE_PAGINA,URL_PAGINA,ESTADO")] PAGINA pAGINA)
@@ -75,8 +74,8 @@ namespace rentCar.Controllers
         }
 
         // POST: paginas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID_PAGINA,NOMBRE_PAGINA,URL_PAGINA,ESTADO")] PAGINA pAGINA)

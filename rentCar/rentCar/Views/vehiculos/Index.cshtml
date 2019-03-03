@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<rentCar.Models.VEHICULO>
 
 @{
-    ViewBag.Title = "Lista de vehículos";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/dashboardLayout.cshtml";
 }
 
-<h2>Lista de vehiculos</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -71,9 +72,9 @@
             @Html.DisplayFor(modelItem => item.TIPO_VEHICULO.NOMBRE_TIPO_VEHICULO)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID_VEHICULO }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID_VEHICULO }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_VEHICULO })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_VEHICULO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_VEHICULO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_VEHICULO })
         </td>
     </tr>
 }
