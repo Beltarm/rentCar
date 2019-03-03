@@ -81,7 +81,13 @@ namespace rentCar.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    {
+                        if (String.IsNullOrEmpty(returnUrl))
+                        {
+                            return RedirectToAction("Index", "Dashboard2");
+                        }
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

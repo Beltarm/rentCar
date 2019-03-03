@@ -10,6 +10,10 @@ namespace rentCar.Controllers
     {
         public ActionResult Index()
         {
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    return RedirectToAction("Index", "Dashboard2");
+            //}
             return View();
         }
 

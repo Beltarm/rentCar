@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<rentCar.Models.MARCA>
 
 @{
+    Layout = "../Shared/dashboardLayout.cshtml";
+}
+
+@{
     ViewBag.Title = "Index";
 }
 
@@ -20,20 +24,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NOMBRE_MARCA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ESTADO)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID_MARCA }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID_MARCA }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_MARCA })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE_MARCA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESTADO)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.ID_MARCA }) |
+                @Html.ActionLink("Detalle", "Details", new { id = item.ID_MARCA }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.ID_MARCA })
+            </td>
+        </tr>
+    }
 
 </table>

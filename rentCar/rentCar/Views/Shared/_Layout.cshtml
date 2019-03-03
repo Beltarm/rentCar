@@ -1,48 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Car Picker</title>
-    @Styles.Render("~/Content/bootstrap.css")
-    @Styles.Render("~/Content/main.css")
-    @Scripts.Render("~/bundles/modernizr")
+﻿@Html.Partial("Head")
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    @Html.ActionLink("Car Picker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logo" })
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-link li-nav">@Html.ActionLink("Inicio", "Index", "Home", new { @class = "li-nav" })</li>
+            <li class="nav-item nav-link li-nav">@Html.ActionLink("Acerca de", "About", "Home", new { @class = "li-nav" })</li>
+            <li class="nav-item nav-link li-nav">@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "li-nav" })</li>
+        </ul>
 
-
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        @Html.ActionLink("Car Picker", "Index", "Home", new { area = "" }, new { @class = "navbar-brand logo" })
-        <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item nav-link li-nav">@Html.ActionLink("Inicio", "Index", "Home", new { @class = "li-nav" })</li>
-                <li class="nav-item nav-link li-nav">@Html.ActionLink("Acerca de", "About", "Home", new { @class = "li-nav" })</li>
-                <li class="nav-item nav-link li-nav">@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "li-nav" })</li>
-            </ul>
-
-            <form class="form-inline my-1 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            @Html.Partial("_LoginPartial")
-        </div>
-    </nav>
-    <br />
-    <br />
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Car Picker</p>
-        </footer>
+        <form class="form-inline my-1 my-lg-0 mr-2">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        @Html.Partial("_LoginPartial")
     </div>
+</nav>
+<br />
+<br />
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Car Picker</p>
+    </footer>
+</div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
+@Html.Partial("Foot")
