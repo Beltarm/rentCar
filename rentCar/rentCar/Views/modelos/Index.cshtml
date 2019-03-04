@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/dashboardLayout.cshtml";
 }
 
-<h2>Lista de modelos</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo modelo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.MARCA.NOMBRE_MARCA)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID_MODELO }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID_MODELO }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_MODELO })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_MODELO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_MODELO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_MODELO })
         </td>
     </tr>
 }

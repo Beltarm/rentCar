@@ -7,9 +7,9 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hola " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Ir al dashboard", "Index", "Dashboard2", routeValues: null, htmlAttributes: new { title = "Manage", @class = ("li-nav mr-2") })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+        <li><a class="li-nav" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
     </ul>
     }
 }

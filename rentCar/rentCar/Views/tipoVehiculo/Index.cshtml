@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/dashboardLayout.cshtml";
 }
 
-<h2>Lista de tipos de vehículos</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nuevo tipo de vehículo", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -29,9 +30,9 @@
             @Html.DisplayFor(modelItem => item.ESTADO)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID_TIPO_VEHICULO }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID_TIPO_VEHICULO }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_TIPO_VEHICULO })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_TIPO_VEHICULO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_TIPO_VEHICULO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_TIPO_VEHICULO })
         </td>
     </tr>
 }

@@ -1,11 +1,11 @@
 ﻿@model rentCar.Models.PAGINA
 
 @{
-    ViewBag.Title = "Crear";
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/dashboardLayout.cshtml";
 }
 
-<h2>Crear nueva página</h2>
-
+<h2>Create</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -48,9 +48,5 @@
 }
 
 <div>
-    @Html.ActionLink("Volver a la lista", "Index")
+    @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

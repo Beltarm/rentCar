@@ -2,12 +2,13 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/dashboardLayout.cshtml";
 }
 
-<h2>Lista de páginas</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Crear nueva página", "Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -35,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.ESTADO)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ID_PAGINA }) |
-            @Html.ActionLink("Detalle", "Details", new { id=item.ID_PAGINA }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID_PAGINA })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_PAGINA }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_PAGINA }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_PAGINA })
         </td>
     </tr>
 }

@@ -175,9 +175,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Dashboard2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\marcasController.cs" />
+    <Compile Include="Controllers\marcaController.cs" />
     <Compile Include="Controllers\modelosController.cs" />
     <Compile Include="Controllers\paginasController.cs" />
     <Compile Include="Controllers\tipoCombustibleController.cs" />
@@ -335,11 +336,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\marcas\Create.cshtml" />
-    <Content Include="Views\marcas\Delete.cshtml" />
-    <Content Include="Views\marcas\Details.cshtml" />
-    <Content Include="Views\marcas\Edit.cshtml" />
-    <Content Include="Views\marcas\Index.cshtml" />
+    <Content Include="Views\Dashboard2\Index.cshtml" />
+    <Content Include="Views\Shared\Head.cshtml" />
+    <Content Include="Views\Shared\Foot.cshtml" />
+    <Content Include="Views\Shared\dashboardLayout.cshtml" />
+    <Content Include="Views\marca\Create.cshtml" />
+    <Content Include="Views\marca\Delete.cshtml" />
+    <Content Include="Views\marca\Details.cshtml" />
+    <Content Include="Views\marca\Edit.cshtml" />
+    <Content Include="Views\marca\Index.cshtml" />
     <Content Include="Views\tipoVehiculo\Create.cshtml" />
     <Content Include="Views\tipoVehiculo\Delete.cshtml" />
     <Content Include="Views\tipoVehiculo\Details.cshtml" />
@@ -350,6 +355,11 @@
     <Content Include="Views\tipoCombustible\Details.cshtml" />
     <Content Include="Views\tipoCombustible\Edit.cshtml" />
     <Content Include="Views\tipoCombustible\Index.cshtml" />
+    <Content Include="Views\vehiculos\Create.cshtml" />
+    <Content Include="Views\vehiculos\Delete.cshtml" />
+    <Content Include="Views\vehiculos\Details.cshtml" />
+    <Content Include="Views\vehiculos\Edit.cshtml" />
+    <Content Include="Views\vehiculos\Index.cshtml" />
     <Content Include="Views\paginas\Create.cshtml" />
     <Content Include="Views\paginas\Delete.cshtml" />
     <Content Include="Views\paginas\Details.cshtml" />
@@ -360,11 +370,6 @@
     <Content Include="Views\modelos\Details.cshtml" />
     <Content Include="Views\modelos\Edit.cshtml" />
     <Content Include="Views\modelos\Index.cshtml" />
-    <Content Include="Views\vehiculos\Create.cshtml" />
-    <Content Include="Views\vehiculos\Delete.cshtml" />
-    <Content Include="Views\vehiculos\Details.cshtml" />
-    <Content Include="Views\vehiculos\Edit.cshtml" />
-    <Content Include="Views\vehiculos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
