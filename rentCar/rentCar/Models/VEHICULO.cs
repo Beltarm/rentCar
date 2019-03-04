@@ -23,6 +23,7 @@ namespace rentCar.Models
        
         public int ID_VEHICULO { get; set; }
         [Display(Name = "No. Placa"),DataType(DataType.Text)]
+        [RegularExpression("[a-zA-Z0-9]+$", ErrorMessage = "Este campo solo acepta letras y números sin espacios")]
         [Required, StringLength(7, MinimumLength = 7)]
         public string NO_PLACA { get; set; }
         [Required]
@@ -43,7 +44,7 @@ namespace rentCar.Models
         public int ID_PAGINA { get; set; }
         [Display(Name = "Estado")]
         [Required,DataType(DataType.Text), StringLength(8, MinimumLength = 6)]
-        //[RegularExpression("^[a-zA-Z]+$", ErrorMessage = "Este campo solo acepta letras")]
+       
         [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
         [Display(Name = "Año"),StringLength(4)]

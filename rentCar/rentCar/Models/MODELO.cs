@@ -24,6 +24,7 @@ namespace rentCar.Models
         public int ID_MODELO { get; set; }
         [Display(Name = "Nombre de modelo"),StringLength(15, MinimumLength = 1)]
         [Required]
+        [RegularExpression("[a-zA-Z0-9 áéíóúñÁÉÍÓÚÑ]+$", ErrorMessage = "Este campo solo acepta letras y números")]
         public string NOMBRE_MODELO { get; set; }
         [Required]
         [Display(Name = "Nombre de marca")]
