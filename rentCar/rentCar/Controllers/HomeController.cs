@@ -49,6 +49,11 @@ namespace rentCar.Controllers
             return View(ListaVehiculosVM);
         }
 
+        //public ActionResult Index(string option, string search)
+        //{
+
+        //}
+
         public ActionResult About()
         {
             ViewBag.Message = "Creadores del proyecto:";
