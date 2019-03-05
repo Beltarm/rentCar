@@ -20,3 +20,18 @@
     font-size: 1.5em;
     font-weight:bold;
 }
+
+
+.blanco{
+    color: white;
+}
+
+.link{
+    font-size: 1.2em;
+}
+
+.aumento:hover {
+    background-color: #e1e1e1;
+    -webkit-transform: scale(1.1);
+    transition: all .3s ease;
+}
