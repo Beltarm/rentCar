@@ -1,21 +1,267 @@
-﻿@Html.Partial("Head")
+﻿@using Microsoft.AspNet.Identity
 
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="container">
-    <ul>
-        <li>@Html.ActionLink("Marcas", "Index", "marca")</li>
-        <li>@Html.ActionLink("Tipos de vehiculo", "Index", "tipoVehiculo")</li>
-        <li>@Html.ActionLink("Modelos", "Index", "modelos")</li>
-        <li>@Html.ActionLink("Paginas", "Index", "paginas")</li>
-        <li>@Html.ActionLink("tipos de combustible", "Index", "tipoCombustible")</li>
-    </ul>
-    @RenderBody()
-</div>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="au theme template">
+    <meta name="author" content="Hau Nguyen">
+    <meta name="keywords" content="au theme template">
 
-    
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <!-- Title Page-->
+    <title>@ViewBag.Title</title>
 
+    <!-- Fontfaces CSS-->
+    @Styles.Render("~/Content/font-face.css")
+    @Styles.Render("~/vendor/font-awesome-4.7/css/font-awesome.min.css")
+    @Styles.Render("~/vendor/font-awesome-5/css/fontawesome-all.min.css")
+    @Styles.Render("~/vendor/mdi-font/css/material-design-iconic-font.min.css")
 
-@Html.Partial("Foot")
+    <!-- Bootstrap CSS-->
+    @Styles.Render("~/vendor/bootstrap-4.1/bootstrap.min.css")
+
+    <!-- Vendor CSS-->
+    @Styles.Render("~/vendor/animsition/animsition.min.css")
+    @Styles.Render("~/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css")
+    @Styles.Render("~/vendor/wow/animate.css")
+    @Styles.Render("~/vendor/css-hamburgers/hamburgers.min.css")
+    @Styles.Render("~/vendor/slick/slick.css")
+    @Styles.Render("~/vendor/select2/select2.min.css")
+    @Styles.Render("~/vendor/perfect-scrollbar/perfect-scrollbar.css")
+
+    <!-- Main CSS-->
+    @Styles.Render("~/Content/theme.css")
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        <!-- HEADER DESKTOP-->
+        <header class="header-desktop3 d-none d-lg-block">
+            <div class="section__content section__content--p35">
+                <div class="header3-wrap">
+                    <div class="header__logo">
+                        <a href="#">
+                            <h4 class="font-weight-bold text-light">CAR PICKER<span class="font-weight-light"> ADMIN</span></h4>
+                        </a>
+                    </div>
+                    <div class="header__navbar">
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-tachometer-alt"></i>Dashboard
+                                    <span class="bot-line"></span>
+                                </a>
+                            </li>
+
+                            <li class="has-sub">
+                                <a href="#">
+                                    <i class="fas fa-desktop"></i>
+                                    <span class="bot-line"></span>Mantenimientos
+                                </a>
+                                <ul class="header3-sub-list list-unstyled">
+                                    <li>
+                                        <a href="button.html">Marcas</a>
+                                    </li>
+                                    <li>
+                                        <a href="badge.html">Modelos</a>
+                                    </li>
+                                    <li>
+                                        <a href="tab.html">Tipo Vehiculos</a>
+                                    </li>
+                                    <li>
+                                        <a href="card.html">Tipo Combustible</a>
+                                    </li>
+                                    <li>
+                                        <a href="alert.html">Vehiculos</a>
+                                    </li>
+                                    <li>
+                                        <a href="progress-bar.html">Paginas</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fas fa-shopping-basket"></i>
+                                    <span class="bot-line"></span>Usuarios
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header__tool">
+                        <div class="account-wrap">
+                            <div class="account-item account-item--style2 clearfix js-item-menu">
+                                <div class="content">
+                                    <a class="js-acc-btn" href="#">
+                                        @Html.Raw(User.Identity.GetUserName())
+                                    </a>
+                                </div>
+                                <div class="account-dropdown js-dropdown">
+                                    <div class="info clearfix">
+                                        <div class="content">
+                                            <h5 class="name">
+                                                <a href="#">@Html.Raw(User.Identity.GetUserName())</a>
+                                            </h5>
+                                            <span class="email">johndoe@example.com</span>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-account"></i>Cuenta
+                                            </a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-settings"></i>Ajustes
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__footer">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-power"></i>Logout
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- END HEADER DESKTOP-->
+        <!-- HEADER MOBILE-->
+        <header class="header-mobile header-mobile-2 d-block d-lg-none">
+            <div class="header-mobile__bar">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="index.html">
+                            <h4 class="font-weight-bold text-light">CAR PICKER<span class="font-weight-light"> ADMIN</span></h4>
+                        </a>
+                        <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Matenimientos
+                            </a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="button.html">Marcas</a>
+                                </li>
+                                <li>
+                                    <a href="badge.html">Modelos</a>
+                                </li>
+                                <li>
+                                    <a href="tab.html">Tipo Vehiculos</a>
+                                </li>
+                                <li>
+                                    <a href="card.html">Tipo Combustible</a>
+                                </li>
+                                <li>
+                                    <a href="alert.html">Vehiculos</a>
+                                </li>
+                                <li>
+                                    <a href="progress-bar.html">Paginas</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="chart.html">
+                                <i class="fas fa-chart-bar"></i>Usuarios
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="sub-header-mobile-2 d-block d-lg-none">
+            <div class="header__tool">
+                <div class="account-wrap">
+                    <div class="account-item account-item--style2 clearfix js-item-menu">
+                        <div class="content">
+                            <a class="js-acc-btn" href="#">john doe</a>
+                        </div>
+                        <div class="account-dropdown js-dropdown">
+                            <div class="info clearfix">
+                                <div class="image">
+                                    <a href="#">
+                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                    </a>
+                                </div>
+                                <div class="content">
+                                    <h5 class="name">
+                                        <a href="#">john doe</a>
+                                    </h5>
+                                    <span class="email">johndoe@example.com</span>
+                                </div>
+                            </div>
+                            <div class="account-dropdown__body">
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-account"></i>Cuenta
+                                    </a>
+                                </div>
+                                <div class="account-dropdown__item">
+                                    <a href="#">
+                                        <i class="zmdi zmdi-settings"></i>Ajustes
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="account-dropdown__footer">
+                                <a href="#">
+                                    <i class="zmdi zmdi-power"></i>Logout
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END HEADER MOBILE -->
+        @RenderBody()
+    </div>
+
+    <!-- Jquery JS-->
+    @Scripts.Render("~/vendor/jquery-3.2.1.min.js")
+
+    <!-- Bootstrap JS-->
+    @Scripts.Render("~/vendor/bootstrap-4.1/popper.min.js")
+    @Scripts.Render("~/vendor/bootstrap-4.1/bootstrap.min.js")
+
+    <!-- Vendor JS       -->
+    @Scripts.Render("~/vendor/slick/slick.min.js")
+    @Scripts.Render("~/vendor/wow/wow.min.js")
+    @Scripts.Render("~/vendor/animsition/animsition.min.js")
+    @Scripts.Render("~/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js")
+    @Scripts.Render("~/vendor/counter-up/jquery.waypoints.min.js")
+    @Scripts.Render("~/vendor/counter-up/jquery.counterup.min.js")
+    @Scripts.Render("~/vendor/circle-progress/circle-progress.min.js")
+    @Scripts.Render("~/vendor/perfect-scrollbar/perfect-scrollbar.js")
+    @Scripts.Render("~/vendor/chartjs/Chart.bundle.min.js")
+    @Scripts.Render("~/vendor/select2/select2.min.js")
+
+    <!-- Main JS-->
+    @Scripts.Render("~/Scripts/main.js")
+    @*<script src="js/main.js"></script>*@
+
+</body>
+</html>
+
