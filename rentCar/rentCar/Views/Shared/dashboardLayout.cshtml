@@ -1,4 +1,11 @@
 ﻿@using Microsoft.AspNet.Identity
+@using rentCar.Models;
+
+@{ 
+    ApplicationDbContext context = new ApplicationDbContext();
+    string userId = User.Identity.GetUserId();
+    ApplicationUser user = context.Users.FirstOrDefault(x => x.Id == userId);
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,14 +51,14 @@
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
-                        <a href="#">
+                        <a href="@Url.Content("/Dashboard2")">
                             <h4 class="font-weight-bold text-light">CAR PICKER<span class="font-weight-light"> ADMIN</span></h4>
                         </a>
                     </div>
                     <div class="header__navbar">
                         <ul class="list-unstyled">
                             <li>
-                                <a href="#">
+                                <a href="@Url.Content("/Dashboard2")">
                                     <i class="fas fa-tachometer-alt"></i>Dashboard
                                     <span class="bot-line"></span>
                                 </a>
@@ -64,22 +71,22 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        <a href="button.html">Marcas</a>
+                                        @Html.ActionLink("Vehiculos", "Index", "vehiculos")                              
                                     </li>
                                     <li>
-                                        <a href="badge.html">Modelos</a>
+                                        @Html.ActionLink("Modelos", "Index", "modelos")
                                     </li>
                                     <li>
-                                        <a href="tab.html">Tipo Vehiculos</a>
+                                        @Html.ActionLink("Tipos de vehiculo", "Index", "tipoVehiculo")
                                     </li>
                                     <li>
-                                        <a href="card.html">Tipo Combustible</a>
+                                        @Html.ActionLink("Tipos de combustible", "Index", "tipoCombustible")
                                     </li>
                                     <li>
-                                        <a href="alert.html">Vehiculos</a>
+                                        @Html.ActionLink("Marcas", "Index", "marca")
                                     </li>
                                     <li>
-                                        <a href="progress-bar.html">Paginas</a>
+                                        @Html.ActionLink("Paginas", "Index", "paginas")
                                     </li>
                                 </ul>
                             </li>
@@ -106,7 +113,9 @@
                                             <h5 class="name">
                                                 <a href="#">@Html.Raw(User.Identity.GetUserName())</a>
                                             </h5>
-                                            <span class="email">johndoe@example.com</span>
+                                            <span class="email">
+                                                @Html.Raw(user.Email)
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="account-dropdown__body">
@@ -122,9 +131,13 @@
                                         </div>
                                     </div>
                                     <div class="account-dropdown__footer">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-power"></i>Logout
-                                        </a>
+                                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <a href="javascript:document.getElementById('logoutForm').submit()">
+                                                <i class="zmdi zmdi-power"></i>Logout
+                                            </a>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -227,7 +240,8 @@
                             </div>
                             <div class="account-dropdown__footer">
                                 <a href="#">
-                                    <i class="zmdi zmdi-power"></i>Logout
+                                    <i class="zmdi zmdi-power"></i>
+                                    @Html.ActionLink("Cerrar sesion", "LogOff", "Account")
                                 </a>
                             </div>
                         </div>
