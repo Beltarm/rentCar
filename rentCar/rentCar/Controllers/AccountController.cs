@@ -82,7 +82,8 @@ namespace rentCar.Controllers
             {
                 case SignInStatus.Success:
                     {
-                        if (String.IsNullOrEmpty(returnUrl))
+                        ApplicationUser user = await UserManager.FindByNameAsync(model.UserName);
+                        if (String.IsNullOrEmpty(returnUrl) && UserManager.IsInRole(user.Id, "Admin"))
                         {
                             return RedirectToAction("Index", "Dashboard2");
                         }

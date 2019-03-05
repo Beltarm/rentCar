@@ -10,6 +10,7 @@ using rentCar.Models;
 
 namespace rentCar.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class tipoVehiculoController : Controller
     {
         private RentCarDBEntities db = new RentCarDBEntities();

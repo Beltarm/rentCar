@@ -10,6 +10,7 @@ using rentCar.Models;
 
 namespace rentCar.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class marcaController : Controller
     {
         private RentCarDBEntities db = new RentCarDBEntities();
