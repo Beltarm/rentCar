@@ -11,9 +11,24 @@
             <li class="nav-item nav-link li-nav">@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "li-nav" })</li>
         </ul>
 
+       
         <form class="form-inline my-1 my-lg-0 mr-2">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle mx-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Concepto de búsqueda
+                </button>
+                <select name="vehiculos" class="dropdown-menu" aria-labelledby="dropdownMenuButton" size="7">
+                    <option class="dropdown-item" value="modelo">Modelo</option>
+                    <option class="dropdown-item" value="marca">Marca</option>
+                    <option class="dropdown-item" value="pagina">Página</option>
+                    <option class="dropdown-item" value="tipoVehiculo">Tipo de Vehículo</option>
+                    <option class="dropdown-item" value="tipoCombustible">Tipo de Combustible</option>
+                    <option class="dropdown-item" value="precio">Precio</option>
+                </select>
+            </div>
+
             <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="buscar">Buscar</button>
         </form>
         @Html.Partial("_LoginPartial")
     </div>
@@ -31,5 +46,5 @@
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
-
+<script src="~/Scripts/umd/Custom.js"></script>
 @Html.Partial("Foot")

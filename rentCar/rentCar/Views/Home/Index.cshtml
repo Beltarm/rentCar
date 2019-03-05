@@ -14,24 +14,25 @@
     @foreach (var item in Model)
     {
         var nombre = item.Marca + " " + item.Modelo + " " + item.year;
+        var precio = "RD$" + item.precio + ".00 diarios";
 
 
-        <div class="card mb-3 col-md-3 mx-4 my-3 aumento">
-            <h3 class="card-header bg-primary blanco">@Html.DisplayFor(modelItem => nombre , new { @class = "blanco"})</h3>
-            <div class="card-body">
-                <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.nombrePagina)</h5>
-                <hr />
-            </div>
-            <img style="height: 100px; width: 50%; display: block;" src="" alt="imagen vehículo">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.tipoVehiculo)</li>
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.tipoCombustible)</li>
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.precio)</li>
-            </ul>
-            <div class="card-body">
-                <a class="link text-decoration-none" href="@Url.Content(item.url)" class="card-link">Rentar</a>
-            </div>
+    <div class="card mb-3 col-md-3 mx-4 my-3 aumento">
+        <h3 class="card-header bg-primary blanco">@Html.DisplayFor(modelItem => nombre, new { @class = "blanco" })</h3>
+        <div class="card-body">
+            <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.nombrePagina)</h5>
+            <hr />
         </div>
+        <img style="height: 200px; width: 100%; display: block;" src="~/Images/challenger.jpg" alt="imagen vehículo">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">@Html.DisplayFor(modelItem => item.tipoVehiculo)</li>
+            <li class="list-group-item">@Html.DisplayFor(modelItem => item.tipoCombustible)</li>
+            <li class="list-group-item">@Html.DisplayFor(modelItem => precio)</li>
+        </ul>
+        <div class="card-body">
+            <a class="link text-decoration-none" href="@Url.Content(item.url)" class="card-link">Rentar</a>
+        </div>
+    </div>
 
     }
 
