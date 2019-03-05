@@ -3,6 +3,9 @@
    color: white !important;
    font-size: 1.1em;
 }
+.li-nav:hover{
+    font-weight: bold;
+}
 
 .logo{
     font-size: 2em;
@@ -35,3 +38,4 @@
     -webkit-transform: scale(1.1);
     transition: all .3s ease;
 }
+
