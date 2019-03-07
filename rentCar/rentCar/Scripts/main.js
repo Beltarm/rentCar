@@ -578,9 +578,6 @@
 
   try {
       //WidgetChart 5
-      fetch('/Graficos').then(resp => {
-          console.log(resp);
-      });
     var ctx = document.getElementById("widgetChart5");
     if (ctx) {
       ctx.height = 220;

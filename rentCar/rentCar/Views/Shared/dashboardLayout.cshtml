@@ -47,7 +47,7 @@
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
-        <header class="header-desktop3 d-none d-lg-block">
+        <header class="header-desktop3 d-none d-lg-block mb-5">
             <div class="section__content section__content--p35">
                 <div class="header3-wrap">
                     <div class="header__logo">
@@ -250,7 +250,9 @@
             </div>
         </div>
         <!-- END HEADER MOBILE -->
-        @RenderBody()
+        <div class="container">
+            @RenderBody()
+        </div>
     </div>
 
     <!-- Jquery JS-->
