@@ -11,7 +11,6 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class PAGINA
     {
@@ -20,17 +19,10 @@ namespace rentCar.Models
         {
             this.VEHICULO = new HashSet<VEHICULO>();
         }
-       
+    
         public int ID_PAGINA { get; set; }
-        [Display(Name = "Nombre de página"), StringLength(15, MinimumLength = 5)]
-        [Required]
         public string NOMBRE_PAGINA { get; set; }
-        [Display(Name = "URL de página") , StringLength(15, MinimumLength = 10), DataType(DataType.Url)]
-        [Required]
         public string URL_PAGINA { get; set; }
-        [Display(Name ="Estado"), StringLength(7, MinimumLength = 6)]
-        [Required]
-        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

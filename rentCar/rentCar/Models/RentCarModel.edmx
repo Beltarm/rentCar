@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RentCarDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RentCarDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CLIENTE">
           <Key>
             <PropertyRef Name="ID_CLIENTE" />
@@ -14,7 +14,7 @@
           <Property Name="NICK_CLIENTE" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PASSWORD_CLIENTE" Type="char" MaxLength="64" Nullable="false" />
           <Property Name="CEDULA_CLIENTE" Type="varchar" MaxLength="11" Nullable="false" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="IMAGEN">
           <Key>
@@ -30,7 +30,7 @@
           </Key>
           <Property Name="ID_MARCA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_MARCA" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="7" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="MODELO">
           <Key>
@@ -39,7 +39,7 @@
           <Property Name="ID_MODELO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_MODELO" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="ID_MARCA" Type="int" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="PAGINA">
           <Key>
@@ -48,7 +48,7 @@
           <Property Name="ID_PAGINA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_PAGINA" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="URL_PAGINA" Type="varchar" MaxLength="50" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="TIPO_COMBUSTIBLE">
           <Key>
@@ -64,7 +64,7 @@
           </Key>
           <Property Name="ID_TIPO_VEHICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NOMBRE_TIPO_VEHICULO" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="8" Nullable="false" />
         </EntityType>
         <EntityType Name="VEHICULO">
           <Key>
@@ -78,7 +78,7 @@
           <Property Name="ID_TIPO_COMBUSTIBLE" Type="int" Nullable="false" />
           <Property Name="PRECIO_VEHICULO" Type="int" />
           <Property Name="ID_PAGINA" Type="int" Nullable="false" />
-          <Property Name="ESTADO" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="YEAR" Type="varchar" MaxLength="4" />
         </EntityType>
         <Association Name="FK__IMAGEN__ID_VEHIC__693CA210">
@@ -105,66 +105,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VEHICULO_MARCA">
-          <End Role="MARCA" Type="Self.MARCA" Multiplicity="1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MARCA">
-              <PropertyRef Name="ID_MARCA" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="ID_MARCA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VEHICULO_MODELO">
-          <End Role="MODELO" Type="Self.MODELO" Multiplicity="1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MODELO">
-              <PropertyRef Name="ID_MODELO" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="ID_MODELO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VEHICULO_PAGINA">
-          <End Role="PAGINA" Type="Self.PAGINA" Multiplicity="1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PAGINA">
-              <PropertyRef Name="ID_PAGINA" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="ID_PAGINA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VEHICULO_TIPO_COMBUSTIBLE">
-          <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_COMBUSTIBLE">
-              <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="ID_TIPO_COMBUSTIBLE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_VEHICULO_TIPO_VEHICULO">
-          <End Role="TIPO_VEHICULO" Type="Self.TIPO_VEHICULO" Multiplicity="1" />
-          <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_VEHICULO">
-              <PropertyRef Name="ID_TIPO_VEHICULO" />
-            </Principal>
-            <Dependent Role="VEHICULO">
-              <PropertyRef Name="ID_TIPO_VEHICULO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="consulta_dinamica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Campo" Type="varchar" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="RentCarDBModelStoreContainer">
           <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IMAGEN" EntityType="Self.IMAGEN" Schema="dbo" store:Type="Tables" />
@@ -182,29 +126,8 @@
             <End Role="MARCA" EntitySet="MARCA" />
             <End Role="MODELO" EntitySet="MODELO" />
           </AssociationSet>
-          <AssociationSet Name="FK_VEHICULO_MARCA" Association="Self.FK_VEHICULO_MARCA">
-            <End Role="MARCA" EntitySet="MARCA" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VEHICULO_MODELO" Association="Self.FK_VEHICULO_MODELO">
-            <End Role="MODELO" EntitySet="MODELO" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VEHICULO_PAGINA" Association="Self.FK_VEHICULO_PAGINA">
-            <End Role="PAGINA" EntitySet="PAGINA" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VEHICULO_TIPO_COMBUSTIBLE" Association="Self.FK_VEHICULO_TIPO_COMBUSTIBLE">
-            <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_VEHICULO_TIPO_VEHICULO" Association="Self.FK_VEHICULO_TIPO_VEHICULO">
-            <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
-            <End Role="VEHICULO" EntitySet="VEHICULO" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RentCarDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -217,7 +140,7 @@
           <Property Name="NICK_CLIENTE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PASSWORD_CLIENTE" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="CEDULA_CLIENTE" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="IMAGEN">
           <Key>
@@ -234,7 +157,7 @@
           </Key>
           <Property Name="ID_MARCA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE_MARCA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MODELO" Relationship="Self.FK__MODELO__ID_MARCA__4222D4EF" FromRole="MARCA" ToRole="MODELO" />
           <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_MARCA" FromRole="MARCA" ToRole="VEHICULO" />
         </EntityType>
@@ -245,7 +168,7 @@
           <Property Name="ID_MODELO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE_MODELO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_MARCA" Type="Int32" />
-          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="MARCA" Relationship="Self.FK__MODELO__ID_MARCA__4222D4EF" FromRole="MODELO" ToRole="MARCA" />
           <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_MODELO" FromRole="MODELO" ToRole="VEHICULO" />
         </EntityType>
@@ -256,7 +179,7 @@
           <Property Name="ID_PAGINA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE_PAGINA" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="URL_PAGINA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_PAGINA" FromRole="PAGINA" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="TIPO_COMBUSTIBLE">
@@ -274,7 +197,7 @@
           </Key>
           <Property Name="ID_TIPO_VEHICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NOMBRE_TIPO_VEHICULO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="VEHICULO" Relationship="Self.FK_VEHICULO_TIPO_VEHICULO" FromRole="TIPO_VEHICULO" ToRole="VEHICULO" />
         </EntityType>
         <EntityType Name="VEHICULO">
@@ -289,7 +212,7 @@
           <Property Name="ID_TIPO_COMBUSTIBLE" Type="Int32" Nullable="false" />
           <Property Name="PRECIO_VEHICULO" Type="Int32" />
           <Property Name="ID_PAGINA" Type="Int32" Nullable="false" />
-          <Property Name="ESTADO" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ESTADO" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="YEAR" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="IMAGEN" Relationship="Self.FK__IMAGEN__ID_VEHIC__693CA210" FromRole="VEHICULO" ToRole="IMAGEN" />
           <NavigationProperty Name="MARCA" Relationship="Self.FK_VEHICULO_MARCA" FromRole="VEHICULO" ToRole="MARCA" />
@@ -419,6 +342,10 @@
             <End Role="TIPO_VEHICULO" EntitySet="TIPO_VEHICULO" />
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
+          <FunctionImport Name="consulta_dinamica">
+            <Parameter Name="Campo" Mode="In" Type="String" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -510,6 +437,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="consulta_dinamica" FunctionName="RentCarDBModel.Store.consulta_dinamica" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

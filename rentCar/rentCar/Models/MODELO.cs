@@ -11,7 +11,6 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class MODELO
     {
@@ -20,18 +19,10 @@ namespace rentCar.Models
         {
             this.VEHICULO = new HashSet<VEHICULO>();
         }
-        
+    
         public int ID_MODELO { get; set; }
-        [Display(Name = "Nombre de modelo"),StringLength(15, MinimumLength = 1)]
-        [Required]
-        [RegularExpression("[a-zA-Z0-9 áéíóúñÁÉÍÓÚÑ]+$", ErrorMessage = "Este campo solo acepta letras y números")]
         public string NOMBRE_MODELO { get; set; }
-        [Required]
-        [Display(Name = "Nombre de marca")]
         public Nullable<int> ID_MARCA { get; set; }
-        [Display(Name = "Estado"), StringLength(7, MinimumLength = 6)]
-        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
-        [Required]
         public string ESTADO { get; set; }
     
         public virtual MARCA MARCA { get; set; }

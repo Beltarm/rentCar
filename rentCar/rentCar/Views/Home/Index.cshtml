@@ -9,31 +9,46 @@
 
 
 
-@model IEnumerable<rentCar.ViewModels.VehiculosVM>
+@model IEnumerable<rentCar.Models.VEHICULO>
 
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-inline my-1 my-lg-0 mr-2" }))
+{
+<select class="custom-select my-1 mr-sm-2" id="option" name="option">
+    <option selected>Criterio de busqueda</option>
+    <option value="MODELO">Modelo</option>
+    <option value="MARCA">Marca</option>
+    <option value="YEAR">Año</option>
+    <option value="PAGINA">Página</option>
+    <option value="TIPO_VEHICULO">Tipo de Vehículo</option>
+    <option value="TIPO_COMBUSTIBLE">Tipo de Combustible</option>
+    <option value="PRECIO">Precio</option>
+</select>
 
+    <input class="form-control mr-sm-2" type="text" id="busqueda" placeholder="Search" name="search">
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="buscar">Buscar</button>
+}
 
 <div class="row">
     @foreach (var item in Model)
     {
-        var nombre = item.Marca + " " + item.Modelo + " " + item.year;
-        var precio = "RD$" + item.precio + ".00 diarios";
+        var nombre = item.MARCA.NOMBRE_MARCA + " " + item.MODELO.NOMBRE_MODELO + " " + item.YEAR;
+        var precio = "RD$" + item.PRECIO_VEHICULO + ".00 diarios";
 
 
         <div class="card mb-3 col-md-3 mx-4 my-3 aumento">
             <h3 class="card-header bg-primary blanco">@Html.DisplayFor(modelItem => nombre, new { @class = "blanco" })</h3>
             <div class="card-body">
-                <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.nombrePagina)</h5>
+                <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.PAGINA.NOMBRE_PAGINA)</h5>
                 <hr />
             </div>
             <img style="height: 200px; width: 100%; display: block;" src="~/Images/challenger.jpg" alt="imagen vehículo">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.tipoVehiculo)</li>
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.tipoCombustible)</li>
+                <li class="list-group-item">@Html.DisplayFor(modelItem => item.TIPO_VEHICULO.NOMBRE_TIPO_VEHICULO)</li>
+                <li class="list-group-item">@Html.DisplayFor(modelItem => item.TIPO_COMBUSTIBLE.NOMBRE_TIPO_COMBUSTIBLE)</li>
                 <li class="list-group-item">@Html.DisplayFor(modelItem => precio)</li>
             </ul>
             <div class="card-body">
-                <a class="link text-decoration-none" href="@Url.Content(item.url)">Rentar</a>
+                <a class="link text-decoration-none" href="@Url.Content(item.PAGINA.URL_PAGINA)">Rentar</a>
             </div>
         </div>
 

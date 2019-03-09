@@ -42,41 +42,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NO_PLACA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PRECIO_VEHICULO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ESTADO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YEAR)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MARCA.NOMBRE_MARCA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MODELO.NOMBRE_MODELO)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PAGINA.NOMBRE_PAGINA)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TIPO_COMBUSTIBLE.NOMBRE_TIPO_COMBUSTIBLE)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TIPO_VEHICULO.NOMBRE_TIPO_VEHICULO)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID_VEHICULO }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID_VEHICULO }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID_VEHICULO })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NO_PLACA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PRECIO_VEHICULO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ESTADO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YEAR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MARCA.NOMBRE_MARCA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MODELO.NOMBRE_MODELO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PAGINA.NOMBRE_PAGINA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_COMBUSTIBLE.NOMBRE_TIPO_COMBUSTIBLE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_VEHICULO.NOMBRE_TIPO_VEHICULO)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_VEHICULO }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_VEHICULO }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_VEHICULO })
+            </td>
+        </tr>
+    }
 
 </table>

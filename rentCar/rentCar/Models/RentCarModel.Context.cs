@@ -12,6 +12,8 @@ namespace rentCar.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class RentCarDBEntities : DbContext
     {
@@ -33,5 +35,18 @@ namespace rentCar.Models
         public virtual DbSet<TIPO_COMBUSTIBLE> TIPO_COMBUSTIBLE { get; set; }
         public virtual DbSet<TIPO_VEHICULO> TIPO_VEHICULO { get; set; }
         public virtual DbSet<VEHICULO> VEHICULO { get; set; }
+    
+        public virtual int consulta_dinamica(string campo, string filtro)
+        {
+            var campoParameter = campo != null ?
+                new ObjectParameter("Campo", campo) :
+                new ObjectParameter("Campo", typeof(string));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("consulta_dinamica", campoParameter, filtroParameter);
+        }
     }
 }
