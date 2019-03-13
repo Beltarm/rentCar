@@ -71,7 +71,7 @@
                                 </a>
                                 <ul class="header3-sub-list list-unstyled">
                                     <li>
-                                        @Html.ActionLink("Vehiculos", "Index", "vehiculos")                              
+                                        @Html.ActionLink("Vehiculos", "Index", "vehiculos")
                                     </li>
                                     <li>
                                         @Html.ActionLink("Modelos", "Index", "modelos")
@@ -97,6 +97,8 @@
                                     <span class="bot-line"></span>Usuarios
                                 </a>
                             </li>
+
+                     
                         </ul>
                     </div>
                     <div class="header__tool">
@@ -125,10 +127,17 @@
                                             </a>
                                         </div>
                                         <div class="account-dropdown__item">
+                                            <a href=@Url.Content("/")>
+                                                <i class="fa fa-home"></i>Volver a inicio
+                                            </a>
+                                        </div>
+
+                                        <div class="account-dropdown__item">
                                             <a href="#">
                                                 <i class="zmdi zmdi-settings"></i>Ajustes
                                             </a>
                                         </div>
+
                                     </div>
                                     <div class="account-dropdown__footer">
                                         @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))

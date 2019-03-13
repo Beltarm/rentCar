@@ -11,6 +11,7 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class TIPO_COMBUSTIBLE
     {
@@ -21,7 +22,11 @@ namespace rentCar.Models
         }
     
         public int ID_TIPO_COMBUSTIBLE { get; set; }
+        [Display(Name = "Tipo de combustible"), Required, StringLength(15, MinimumLength = 1)]
+        [RegularExpression("[a-zA-Z áéíóúñÁÉÍÓÚÑ]+$", ErrorMessage = "Este campo solo acepta letras")]
         public string NOMBRE_TIPO_COMBUSTIBLE { get; set; }
+        [Display(Name = "Estado"), Required, StringLength(8, MinimumLength = 6)]
+        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
