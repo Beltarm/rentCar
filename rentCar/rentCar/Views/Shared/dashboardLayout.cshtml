@@ -98,7 +98,7 @@
                                 </a>
                             </li>
 
-                     
+
                         </ul>
                     </div>
                     <div class="header__tool">
@@ -286,6 +286,8 @@
     <!-- Main JS-->
     @Scripts.Render("~/Scripts/main.js")
     @*<script src="js/main.js"></script>*@
+
+    @RenderSection("scripts", false);
 
 </body>
 </html>

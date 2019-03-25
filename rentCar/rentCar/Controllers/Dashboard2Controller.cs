@@ -22,8 +22,8 @@ namespace rentCar.Controllers
 
             ViewBag.User = user;
             ViewBag.paginasAsociadas = db.PAGINA.Count();
-            ViewBag.cantidadVehiculos = db.VEHICULO.Where(vehiculo => vehiculo.ESTADO == "ACTIVO").Count();
-            ViewBag.Data = "hola";
+            ViewBag.VehiculosDisponibles = db.VEHICULO.Where(vehiculo => vehiculo.ESTADO == "ACTIVO").Count();
+            ViewBag.VehiculosAlquilados = db.VEHICULO.Where(vehiculo => vehiculo.ESTADO == "INACTIVO").Count();
             return View();
         }
     }

@@ -55,42 +55,33 @@
     <section class="statistic statistic2">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 col-lg-3">
+                <div class="col-md-4">
                     <div class="statistic__item statistic__item--green">
-                        <h2 class="number">@Html.Raw(ViewBag.cantidadVehiculos)</h2>
+                        <h2 class="number">@Html.Raw(ViewBag.paginasAsociadas)</h2>
                         <span class="desc">Paginas asociadas</span>
                         <div class="icon">
                             <i class="zmdi zmdi-account-o"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="col-md-4">
                     <div class="statistic__item statistic__item--orange">
-                        <h2 class="number">@Html.Raw(ViewBag.cantidadVehiculos)</h2>
+                        <h2 class="number">@Html.Raw(ViewBag.VehiculosDisponibles)</h2>
                         <span class="desc">Vehiculos disponibles</span>
                         <div class="icon">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-3">
+                <div class="col-md-4">
                     <div class="statistic__item statistic__item--blue">
-                        <h2 class="number">1,086</h2>
-                        <span class="desc">this week</span>
+                        <h2 class="number">@Html.Raw(ViewBag.VehiculosAlquilados)</h2>
+                        <span class="desc">Vehiculos alquilados</span>
                         <div class="icon">
                             <i class="zmdi zmdi-calendar-note"></i>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="statistic__item statistic__item--red">
-                        <h2 class="number">$1,060,386</h2>
-                        <span class="desc">total earnings</span>
-                        <div class="icon">
-                            <i class="zmdi zmdi-money"></i>
-                        </div>
-                    </div>
-                </div>
+                </div>        
             </div>
         </div>
     </section>
@@ -121,30 +112,11 @@
                 <div class="col-md-6 col-lg-4">
                     <!-- TOP CAMPAIGN-->
                     <div class="top-campaign">
-                        <h3 class="title-3 m-b-30">top campaigns</h3>
+                        <h3 class="title-3 m-b-30">top marcas</h3>
                         <div class="table-responsive">
                             <table class="table table-top-campaign">
                                 <tbody>
-                                    <tr>
-                                        <td>1. Australia</td>
-                                        <td>$70,261.65</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2. United Kingdom</td>
-                                        <td>$46,399.22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3. Turkey</td>
-                                        <td>$35,364.90</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4. Germany</td>
-                                        <td>$20,366.96</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5. France</td>
-                                        <td>$10,366.96</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -180,4 +152,39 @@
     <!-- END STATISTIC CHART-->
 </div>
 
+
+@section scripts {
+
+    <script>
+        $(function () {
+            
+            try {
+                var tabla = $('.table-top-campaign tbody');
+                if (tabla) {
+                    $.ajax({
+                        method: 'GET',
+                        url: '@Url.Action("obtenerVehiculos", "Graficas")',
+                        dataType: "json",
+                        success: function (data) {
+                            $.each(data, function (i, item) {
+                                var lugar = i + 1;
+                                var fila = `
+                                    <tr>
+                                        <td>${lugar}. ${item.Marca}</td>
+                                        <td>${item.cantidad}</td>
+                                    </tr>
+                                `;
+                                tabla.append(fila);
+                            })
+                        }
+                    });
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        })
+
+    </script>
+
+}
 

@@ -185,6 +185,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Dashboard2Controller.cs" />
+    <Compile Include="Controllers\GraficasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\marcaController.cs" />
@@ -587,6 +588,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Graficas\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

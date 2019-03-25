@@ -621,7 +621,7 @@
   try {
 
     // Percent Chart 2
-    var ctx = document.getElementById("percent-chart2");
+      var ctx = document.getElementById("percent-chart2");
     if (ctx) {
       ctx.height = 209;
       var myChart = new Chart(ctx, {
