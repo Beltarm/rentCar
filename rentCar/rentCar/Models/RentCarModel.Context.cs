@@ -35,6 +35,7 @@ namespace rentCar.Models
         public virtual DbSet<TIPO_COMBUSTIBLE> TIPO_COMBUSTIBLE { get; set; }
         public virtual DbSet<TIPO_VEHICULO> TIPO_VEHICULO { get; set; }
         public virtual DbSet<VEHICULO> VEHICULO { get; set; }
+        public virtual DbSet<VISITAS> VISITAS { get; set; }
     
         public virtual int consulta_dinamica(string campo, string filtro)
         {

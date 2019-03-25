@@ -20,6 +20,7 @@
         <AssociationConnector Association="RentCarDBModel.FK_VEHICULO_PAGINA" ManuallyRouted="false" />
         <AssociationConnector Association="RentCarDBModel.FK_VEHICULO_TIPO_COMBUSTIBLE" ManuallyRouted="false" />
         <AssociationConnector Association="RentCarDBModel.FK_VEHICULO_TIPO_VEHICULO" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RentCarDBModel.VISITAS" Width="1.5" PointX="8.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

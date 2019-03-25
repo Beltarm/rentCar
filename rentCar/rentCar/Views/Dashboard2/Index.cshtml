@@ -60,7 +60,7 @@
                         <h2 class="number">@Html.Raw(ViewBag.paginasAsociadas)</h2>
                         <span class="desc">Paginas asociadas</span>
                         <div class="icon">
-                            <i class="zmdi zmdi-account-o"></i>
+                            <i class="zmdi zmdi-search-in-page"></i>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <h2 class="number">@Html.Raw(ViewBag.VehiculosDisponibles)</h2>
                         <span class="desc">Vehiculos disponibles</span>
                         <div class="icon">
-                            <i class="zmdi zmdi-shopping-cart"></i>
+                            <i class="zmdi zmdi-car"></i>
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         <h2 class="number">@Html.Raw(ViewBag.VehiculosAlquilados)</h2>
                         <span class="desc">Vehiculos alquilados</span>
                         <div class="icon">
-                            <i class="zmdi zmdi-calendar-note"></i>
+                            <i class="zmdi zmdi-car-wash"></i>
                         </div>
                     </div>
                 </div>        
@@ -91,37 +91,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h3 class="title-5 m-b-35">statistics</h3>
+                    <h3 class="title-5 m-b-35">Estadisticas</h3>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6 col-lg-4">
-                    <!-- CHART-->
-                    <div class="statistic-chart-1">
-                        <h3 class="title-3 m-b-30">chart</h3>
-                        <div class="chart-wrap">
-                            <canvas id="widgetChart5"></canvas>
-                        </div>
-                        <div class="statistic-chart-1-note">
-                            <span class="big">10,368</span>
-                            <span>/ 16220 items sold</span>
+                <div class="col-lg-4">
+                    <!-- VISITAS DIARIAS-->
+                    <div class="au-card m-b-30">
+                        <div class="au-card-inner">
+                            <h3 class="title-2 m-b-40">Single Bar Chart</h3>
+                            <canvas id="singelBarChart"></canvas>
                         </div>
                     </div>
-                    <!-- END CHART-->
+                    <!-- VISITAS DIARIAS-->
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <!-- TOP CAMPAIGN-->
+                    <!-- TOP MARCAS-->
                     <div class="top-campaign">
                         <h3 class="title-3 m-b-30">top marcas</h3>
                         <div class="table-responsive">
                             <table class="table table-top-campaign">
-                                <tbody>
-                                    
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
-                    <!-- END TOP CAMPAIGN-->
+                    <!-- END TOP MARCAS-->
                 </div>
                 <div class="col-md-6 col-lg-4">
                     <!-- CHART PERCENT-->
@@ -179,6 +173,66 @@
                         }
                     });
                 }
+            } catch (error) {
+                console.log(error);
+            }
+
+            try {
+
+                // single bar chart
+                var ctx = document.getElementById("singelBarChart");
+                if (ctx) {
+                    ctx.height = 200;
+                    var visitas = [];
+                    $.ajax({
+                        method: 'GET',
+                        async: false,
+                        url: '@Url.Action("obtenerVisitas", "Graficas")',
+                        dataType: "json",
+                        success: function (data) {
+                            visitas = data;
+                        }
+                    });
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"],
+                            datasets: [
+                                {
+                                    label: "Cantidad de visitas",
+                                    data: visitas,
+                                    borderColor: "rgba(0, 123, 255, 0.9)",
+                                    borderWidth: "0",
+                                    backgroundColor: "rgba(0, 123, 255, 0.5)"
+                                }
+                            ]
+                        },
+                        options: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    fontFamily: 'Poppins'
+                                }
+
+                            },
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        fontFamily: "Poppins"
+
+                                    }
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        fontFamily: "Poppins"
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                }
+
             } catch (error) {
                 console.log(error);
             }

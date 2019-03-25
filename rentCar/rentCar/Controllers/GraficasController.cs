@@ -27,5 +27,14 @@ namespace rentCar.Controllers
 
             return Json(marcas, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult obtenerVisitas()
+        {
+
+            var visitas = db.VISITAS.Select(v => v.CANTIDAD_VISITA).ToList();
+
+            return Json(visitas, JsonRequestBehavior.AllowGet);
+        }
     }
 }

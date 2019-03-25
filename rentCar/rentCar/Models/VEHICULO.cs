@@ -11,7 +11,6 @@ namespace rentCar.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     
     public partial class VEHICULO
     {
@@ -22,32 +21,14 @@ namespace rentCar.Models
         }
     
         public int ID_VEHICULO { get; set; }
-        [Display(Name = "No. Placa"), DataType(DataType.Text)]
-        [RegularExpression("[a-zA-Z0-9]+$", ErrorMessage = "Este campo solo acepta letras y números sin espacios")]
-        [Required, StringLength(7, MinimumLength = 7)]
         public string NO_PLACA { get; set; }
-        [Required]
-        [Display(Name = "Tipo de vehiculo")]
         public int ID_TIPO_VEHICULO { get; set; }
-        [Required]
-        [Display(Name = "Nombre de marca")]
         public int ID_MARCA { get; set; }
-        [Required]
         public int ID_MODELO { get; set; }
-        [Required]
         public int ID_TIPO_COMBUSTIBLE { get; set; }
-        [Display(Name = "Precio de vehiculo"), /*DataType(DataType.Currency),*/ Range(400, 5000, ErrorMessage = "Los precios se calculan por día, y debe ser entre 400 y 4000 pesos dominicanos o su equivalente")]
-        [Required]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Este campo solo acepta números")]
         public Nullable<int> PRECIO_VEHICULO { get; set; }
-        [Display(Name = "Nombre página"), Required]
         public int ID_PAGINA { get; set; }
-        [Display(Name = "Estado"), StringLength(8, MinimumLength = 6)]
-        [RegularExpression("^(ACTIVO|INACTIVO)$", ErrorMessage = "Este campo solo acepta los valores ACTIVO o INACTIVO")]
         public string ESTADO { get; set; }
-        [Display(Name = "Año"), StringLength(4)]
-        [Required]
-        [RegularExpression("^[0-9]*$", ErrorMessage = "Este campo solo acepta números"), Range(2005, 2018, ErrorMessage = "Digite un año correcto entre 2005 y 2018")]
         public string YEAR { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

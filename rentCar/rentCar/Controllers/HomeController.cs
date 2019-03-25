@@ -7,6 +7,7 @@ using rentCar.Models;
 using rentCar.ViewModels;
 using System.Data.Entity;
 using System.Web.Script.Serialization;
+using System.Globalization;
 
 namespace rentCar.Controllers
 {
@@ -17,6 +18,14 @@ namespace rentCar.Controllers
 
         public ActionResult Index()
         {
+            /******************CONTADOR DE VISITAS********************************/
+            CultureInfo ci = new CultureInfo("Es-Es"); 
+            string day = ci.DateTimeFormat.GetDayName(DateTime.Now.DayOfWeek);
+            var visitas = db.VISITAS.Where(v => v.DIA_VSITA == day).FirstOrDefault();
+            visitas.CANTIDAD_VISITA += 1;
+            db.SaveChanges();
+            /***************************************************************************/
+
             var vEHICULOs = db.VEHICULO
                 .Include(v => v.MARCA).Include(v => v.MODELO).Include(v => v.PAGINA)
                 .Include(v => v.TIPO_COMBUSTIBLE).Include(v => v.TIPO_VEHICULO)
