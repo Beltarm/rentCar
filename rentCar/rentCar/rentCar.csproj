@@ -187,6 +187,7 @@
     <Compile Include="Controllers\Dashboard2Controller.cs" />
     <Compile Include="Controllers\GraficasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\imagenController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\marcaController.cs" />
     <Compile Include="Controllers\modelosController.cs" />
@@ -252,6 +253,7 @@
     <Content Include="Content\bootstrap-ref.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\font-face.css" />
+    <Content Include="Content\Images\corolla 2013-2.jpg" />
     <Content Include="Content\main.css" />
     <Content Include="Content\theme.css" />
     <Content Include="favicon.ico" />
@@ -275,7 +277,7 @@
     <Content Include="fonts\poppins\poppins-v5-latin-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\challenger.jpg" />
+    <Content Include="Content\Images\challenger.jpg" />
     <Content Include="Models\RentCarModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>RentCarModel.edmx</DependentUpon>
@@ -588,6 +590,11 @@
     <Content Include="vendor\slick\slick-theme.scss" />
     <Content Include="vendor\slick\slick.less" />
     <Content Include="vendor\slick\slick.scss" />
+    <Content Include="Views\imagen\Create.cshtml" />
+    <Content Include="Views\imagen\Delete.cshtml" />
+    <Content Include="Views\imagen\Details.cshtml" />
+    <Content Include="Views\imagen\Edit.cshtml" />
+    <Content Include="Views\imagen\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

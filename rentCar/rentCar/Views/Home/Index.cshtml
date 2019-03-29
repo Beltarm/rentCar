@@ -28,30 +28,55 @@
     <button class="btn btn-secondary my-2 my-sm-0" type="submit" value="buscar">Buscar</button>
 }
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        var nombre = item.MARCA.NOMBRE_MARCA + " " + item.MODELO.NOMBRE_MODELO + " " + item.YEAR;
-        var precio = "RD$" + item.PRECIO_VEHICULO + ".00 diarios";
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            int cont = 0;
+            var nombre = item.MARCA.NOMBRE_MARCA + " " + item.MODELO.NOMBRE_MODELO + " " + item.YEAR;
+            var precio = "RD$" + item.PRECIO_VEHICULO + ".00 diarios";
+            var idDinamico = "carouselExampleControls" + item.NO_PLACA.ToString();
+
+            <div class="card mb-3 col-md-3 mx-4 my-3 aumento">
+                <h3 class="card-header bg-primary blanco">@Html.DisplayFor(modelItem => nombre, new { @class = "blanco" })</h3>
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.PAGINA.NOMBRE_PAGINA)</h5>
+                    <hr />
+                </div>
 
 
-        <div class="card mb-3 col-md-3 mx-4 my-3 aumento">
-            <h3 class="card-header bg-primary blanco">@Html.DisplayFor(modelItem => nombre, new { @class = "blanco" })</h3>
-            <div class="card-body">
-                <h5 class="card-title font-weight-bold">@Html.DisplayFor(modelItem => item.PAGINA.NOMBRE_PAGINA)</h5>
-                <hr />
+                <div id="@idDinamico" class="carousel slide galeria" data-ride="carousel">
+                    <div class="carousel-inner" @*role="listbox"*@>
+                        <div class="active">
+                            @foreach (var imagen in item.IMAGEN)
+                            {
+                                var itemDinamico = cont++ == 0 ? "carousel-item active" : "carousel-item";
+                                <div class="@itemDinamico gris">
+                                    <img src="@Url.Content(imagen.RUTA_IMAGEN)" class="d-block w-100 galeria-item" alt="imagen vehículo">
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#@idDinamico" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#@idDinamico" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">@Html.DisplayFor(modelItem => item.TIPO_VEHICULO.NOMBRE_TIPO_VEHICULO)</li>
+                    <li class="list-group-item">@Html.DisplayFor(modelItem => item.TIPO_COMBUSTIBLE.NOMBRE_TIPO_COMBUSTIBLE)</li>
+                    <li class="list-group-item">@Html.DisplayFor(modelItem => precio)</li>
+                </ul>
+                <div class="card-body">
+                    <a class="link text-decoration-none" href="@Url.Content(item.PAGINA.URL_PAGINA)">Rentar</a>
+                </div>
             </div>
-            <img style="height: 200px; width: 100%; display: block;" src="~/Images/challenger.jpg" alt="imagen vehículo">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.TIPO_VEHICULO.NOMBRE_TIPO_VEHICULO)</li>
-                <li class="list-group-item">@Html.DisplayFor(modelItem => item.TIPO_COMBUSTIBLE.NOMBRE_TIPO_COMBUSTIBLE)</li>
-                <li class="list-group-item">@Html.DisplayFor(modelItem => precio)</li>
-            </ul>
-            <div class="card-body">
-                <a class="link text-decoration-none" href="@Url.Content(item.PAGINA.URL_PAGINA)">Rentar</a>
-            </div>
-        </div>
 
-    }
+        }
 
-</div>
+    </div>

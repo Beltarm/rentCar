@@ -28,8 +28,9 @@ namespace rentCar.Controllers
 
             var vEHICULOs = db.VEHICULO
                 .Include(v => v.MARCA).Include(v => v.MODELO).Include(v => v.PAGINA)
-                .Include(v => v.TIPO_COMBUSTIBLE).Include(v => v.TIPO_VEHICULO)
+                .Include(v => v.TIPO_COMBUSTIBLE).Include(v => v.TIPO_VEHICULO).Include(v => v.IMAGEN)
                 .Select(v => v);
+ 
             
             return View(vEHICULOs.ToList());
         }

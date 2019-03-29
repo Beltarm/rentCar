@@ -39,7 +39,24 @@
     -moz-transform: scale(1.1);
     transition: all .3s ease;
 }
+
 .wrapper-form{
     width: 100% !important;
     margin: 2rem 0 !important;
+}
+.galeria {
+    height: 200px;
+    width: 100%;
+    display: block;
+    
+}
+
+.galeria-item {
+    width: 100%;
+    height: 190px;
+   
+}
+
+.gris {
+    background-color: #e1e1e1;
 }
