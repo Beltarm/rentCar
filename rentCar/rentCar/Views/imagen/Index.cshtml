@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            Imágen actual
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.RUTA_IMAGEN)
         </th>
         <th>
@@ -22,6 +25,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            <img src="@Url.Content(item.RUTA_IMAGEN)" alt="imagen vehículo" style="max-width: 150px">
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.RUTA_IMAGEN)
         </td>
