@@ -16,7 +16,11 @@ namespace rentCar.Models
     public partial class IMAGEN
     {
         public int ID_IMAGEN { get; set; }
+        [Required]
+        [Display(Name = "No. Placa")]
         public Nullable<int> ID_VEHICULO { get; set; }
+        [Required]
+        [Display(Name = "Ruta de imágen")]
         public string RUTA_IMAGEN { get; set; }
     
         public virtual VEHICULO VEHICULO { get; set; }
